@@ -1,82 +1,83 @@
-<div class="p-5 d-flex justify-content-center align-items-center my-5">
-  <div class="flex-grow-1 container p-5">
-    <div class="text-center mb-5 mb-md-7">
-      <h1 class="h2">Welcome to TedX Romania</h1>
-      <p class="text-secondary">Fill out the form to get started.</p>
+<div class="row">
+  <div class="d-none d-sm-flex col-md-6 logo">
+    <img src="assets/img/logo/logo.png" alt="" class="icon" />
+  </div>
+  <div class="col-sm-12 col-md-6 form-container">
+    <div class="p-5">
+      <div class="text-center mb-5 mb-md-7">
+        <h1 class="h2">Welcome to ChatWave</h1>
+        <p class="text-secondary">Fill out the form to get started.</p>
+      </div>
+
+      <form class="form border-primary rounded-pill">
+        <div class="mb-4">
+          <label class="form-label">Your email</label>
+          <input
+            type="email"
+            id="email-value"
+            class="form-control form-control-lg"
+            name="email"
+            placeholder="Your email"
+            aria-label="Your email"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Your First Name</label>
+          <input
+            type="text"
+            id="firstName-value"
+            class="form-control form-control-lg firstName-value"
+            name="first name"
+            placeholder="Your First Name"
+            aria-label="Your First Name"
+            required=""
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Your Last Name</label>
+          <input
+            type="text"
+            id="lastName-value"
+            class="form-control form-control-lg lastName-value"
+            name="last name"
+            placeholder="Your Last Name"
+            aria-label="YYour Last Name"
+            required=""
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="signupModalFormSignupPassword"
+            >Password</label
+          >
+          <input
+            type="text"
+            id="password-value"
+            class="js-toggle-password form-control form-control-lg"
+            name="password"
+            id="signupModalFormSignupPassword"
+            placeholder="6+ characters required"
+            aria-label="6+ characters required"
+            required=""
+          />
+        </div>
+
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary btn-lg singUp">
+            Sing up
+          </button>
+        </div>
+
+        <div class="text-center">
+          <p>
+            Already have an account?
+            <a class="link" href="login.html">Log in here</a>
+          </p>
+        </div>
+      </form>
     </div>
-
-    <form class="form">
-      <div class="mb-4">
-        <label class="form-label">Your email</label>
-        <input
-          type="email"
-          id="email-value"
-          class="form-control form-control-lg"
-          name="email"
-          placeholder="Your email"
-          aria-label="Your email"
-          required
-        />
-      </div>
-
-      <div class="mb-4">
-        <label class="form-label">Your First Name</label>
-        <input
-          type="text"
-          id="firstName-value"
-          class="form-control form-control-lg firstName-value"
-          name="first name"
-          placeholder="Your First Name"
-          aria-label="Your First Name"
-          required=""
-        />
-      </div>
-
-      <div class="mb-4">
-        <label class="form-label">Your Last Name</label>
-        <input
-          type="text"
-          id="lastName-value"
-          class="form-control form-control-lg lastName-value"
-          name="last name"
-          placeholder="Your Last Name"
-          aria-label="YYour Last Name"
-          required=""
-        />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="signupModalFormSignupPassword"
-          >Password</label
-        >
-        <input
-          type="text"
-          id="password-value"
-          class="js-toggle-password form-control form-control-lg"
-          name="password"
-          id="signupModalFormSignupPassword"
-          placeholder="6+ characters required"
-          aria-label="6+ characters required"
-          required=""
-        />
-      </div>
-
-      <div class="d-grid mb-3">
-        <button
-          type="submit"
-          class="btn btn-primary btn-lg singUp"
-          onclick="onRegisterClick(event)"
-        >
-          Sing up
-        </button>
-      </div>
-
-      <div class="text-center">
-        <p>
-          Already have an account?
-          <a class="link" href="login.html">Log in here</a>
-        </p>
-      </div>
-    </form>
   </div>
 </div>

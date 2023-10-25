@@ -1,0 +1,23 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.logo {
+    width: 50%;
+}
+
+.icon {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.form {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}

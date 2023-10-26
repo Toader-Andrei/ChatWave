@@ -7,7 +7,7 @@ import { ChatOverviewComponent } from './views/chat-overview/chat-overview.compo
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/main',
     pathMatch: 'full',
   },
   {

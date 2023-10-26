@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "email": "toaderandrei58@gmail.com",
+      "password": "mypassword",
+      "id": 1
+    },
+    {
+      "firstName": "Mihaela",
+      "lastName": "Toader",
+      "email": "t.mihaela66@yahoo.com",
+      "password": "parolamea123",
+      "id": 2
+    }
+  ]
+}

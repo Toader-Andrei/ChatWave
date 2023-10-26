@@ -28,6 +28,13 @@
     font-size: 35px;
 }
 
+input.ng-invalid.ng-touched {
+    border: red 1px solid;
+}
+input.ng-dirty.ng-valid{
+    border: green 1px solid
+}
+
 @media (max-width: 767.98px) { 
     form{
         margin: 10px;

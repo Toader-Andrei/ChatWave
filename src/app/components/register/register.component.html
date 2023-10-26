@@ -9,17 +9,20 @@
         <p class="text-secondary">Fill out the form to get started.</p>
       </div>
 
-      <form class="form border-primary rounded-pill">
+      <form
+        class="form border-primary rounded-pill"
+        [formGroup]="myForm"
+        (ngSubmit)="onSubmit(myForm)"
+      >
         <div class="mb-4">
           <label class="form-label">Your email</label>
           <input
             type="email"
             id="email-value"
             class="form-control form-control-lg"
-            name="email"
+            formControlName="email"
             placeholder="Your email"
             aria-label="Your email"
-            required
           />
         </div>
 
@@ -29,10 +32,9 @@
             type="text"
             id="firstName-value"
             class="form-control form-control-lg firstName-value"
-            name="first name"
+            formControlName="firstName"
             placeholder="Your First Name"
             aria-label="Your First Name"
-            required=""
           />
         </div>
 
@@ -42,10 +44,9 @@
             type="text"
             id="lastName-value"
             class="form-control form-control-lg lastName-value"
-            name="last name"
+            formControlName="lastName"
             placeholder="Your Last Name"
-            aria-label="YYour Last Name"
-            required=""
+            aria-label="Your Last Name"
           />
         </div>
 
@@ -57,16 +58,20 @@
             type="text"
             id="password-value"
             class="js-toggle-password form-control form-control-lg"
-            name="password"
+            formControlName="password"
             id="signupModalFormSignupPassword"
             placeholder="6+ characters required"
             aria-label="6+ characters required"
-            required=""
           />
         </div>
 
         <div class="d-grid mb-3">
-          <button type="submit" class="btn btn-primary btn-lg singUp">
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg"
+            [disabled]="myForm.invalid"
+            (click)="goToPage('main')"
+          >
             Sing up
           </button>
         </div>

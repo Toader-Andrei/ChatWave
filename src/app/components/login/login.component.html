@@ -3,7 +3,7 @@
     <img src="assets/img/logo/logo.png" alt="" class="icon" />
   </div>
   <div class="col-sm-12 col-md-6 form-container">
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
       <div
         class="d-flex justify-content-center align-items-center border border-primary rounded-pill"
       >
@@ -45,7 +45,6 @@
               type="submit"
               class="btn btn-primary btn-lg"
               [disabled]="myForm.invalid"
-              (click)="goToPage('main')"
             >
               Log in
             </button>

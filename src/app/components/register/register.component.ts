@@ -50,6 +50,6 @@ export class RegisterComponent implements OnInit {
   }
 
   goToPage(pageName: string): void {
-    // this.router.navigate([`${pageName}`]);
+    this.router.navigate([`${pageName}`]);
   }
 }

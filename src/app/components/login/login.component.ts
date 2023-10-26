@@ -21,21 +21,23 @@ export class LoginComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(9),
       ]),
     });
   }
 
-  onSubmit() {
-    console.log(this.myForm);
-    console.log(
-      this.accountsService.getAccounts().subscribe((profile) => {
-        console.log(profile);
-      })
-    );
-  }
-
-  goToPage(pageName: string): void {
-    // this.router.navigate([`${pageName}`]);
+  onSubmit(form: FormGroup) {
+    this.accountsService.getAccounts().subscribe((profile) => {
+      profile.filter((user) => {
+        if (
+          user.email === form.value.email &&
+          user.password === form.value.password
+        ) {
+          this.router.navigate([`main`]);
+        } else {
+          console.log('0');
+        }
+      });
+    });
   }
 }

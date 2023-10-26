@@ -27,7 +27,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    this.accountsService.getAccounts().subscribe((profile) => {
+    const user = {
+      email: form.value.email,
+      password: form.value.password,
+    };
+
+    this.accountsService.getAccounts(user).subscribe((profile) => {
       profile.filter((user) => {
         if (
           user.email === form.value.email &&

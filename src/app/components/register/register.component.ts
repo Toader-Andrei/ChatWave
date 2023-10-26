@@ -45,11 +45,9 @@ export class RegisterComponent implements OnInit {
     };
 
     this.accountsService.pushAccounts(user).subscribe((a) => {
-      return a.push(user);
+      return user;
     });
-  }
 
-  goToPage(pageName: string): void {
-    this.router.navigate([`${pageName}`]);
+    this.router.navigate([`main`]);
   }
 }

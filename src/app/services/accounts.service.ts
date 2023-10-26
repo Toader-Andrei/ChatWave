@@ -16,7 +16,7 @@ export class AccountsService {
     return this.http.post<Profile[]>(this.apiUrl, user);
   }
 
-  getAccounts(): Observable<Profile[]> {
+  getAccounts(user: any): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.apiUrl);
   }
 }

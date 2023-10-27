@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         ) {
           this.router.navigate([`main`]);
         } else {
-          console.log('0');
+          alert('Please enter a valid account');
         }
       });
     });

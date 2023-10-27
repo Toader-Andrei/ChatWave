@@ -1,27 +1,33 @@
-# AngularMessanger
+# ChatWave - Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+## Application description:
 
-## Development server
+ChatWave is a
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- `Register`: Users can create a real account to acces the rest of the fuctionalities from bellow.
+- `Login`: Users can acces their account and enjoy the site
+- `c`:
 
-## Code scaffolding
+## PRINT-SCREENS
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 1. Register page:
 
-## Build
+![cheese!](/public/Initial.PNG)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 2. Register fail:
 
-## Running unit tests
+![cheese!](/public/register-failed.PNG)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 3. Register works:
 
-## Running end-to-end tests
+![cheese!](/public//register-worked.PNG)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 4.
 
-## Further help
+![cheese!]()
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Please see below from futher intructions.
+
+### `1. npm install`
+
+### `2. ng serve --open`

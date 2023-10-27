@@ -11,7 +11,8 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ChatOverviewComponent } from './views/chat-overview/chat-overview.component';
+import { OverviewComponent } from './views/overview/overview.component';
+import { NavigatorComponent } from './components/navigator/navigator.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ChatOverviewComponent } from './views/chat-overview/chat-overview.compo
     ChatComponent,
     LoginComponent,
     RegisterComponent,
-    ChatOverviewComponent,
+    OverviewComponent,
+    NavigatorComponent,
   ],
   imports: [
     BrowserModule,

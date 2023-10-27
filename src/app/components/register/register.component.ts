@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 
 import { Router } from '@angular/router';
-import { Profile } from 'src/app/models/interfaces/Profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 
 @Component({
@@ -44,10 +43,8 @@ export class RegisterComponent implements OnInit {
       password: form.value.password,
     };
 
-    this.accountsService.pushAccounts(user).subscribe((a) => {
-      return user;
+    this.accountsService.registerAccount(user).subscribe(() => {
+      this.router.navigateByUrl('/overview');
     });
-
-    this.router.navigate([`main`]);
   }
 }

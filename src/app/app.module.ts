@@ -13,6 +13,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { OverviewComponent } from './views/overview/overview.component';
 import { NavigatorComponent } from './components/navigator/navigator.component';
+import { SettingsModalComponent } from './components/settings-modal/settings-modal.component';
+import { ProfileModalComponent } from './components/profile-modal/profile-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { NavigatorComponent } from './components/navigator/navigator.component';
     RegisterComponent,
     OverviewComponent,
     NavigatorComponent,
+    SettingsModalComponent,
+    ProfileModalComponent,
   ],
   imports: [
     BrowserModule,

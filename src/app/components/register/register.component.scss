@@ -1,3 +1,4 @@
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -32,7 +33,19 @@ input.ng-invalid.ng-touched {
     border: red 1px solid;
 }
 input.ng-dirty.ng-valid{
-    border: green 1px solid
+    border: green 1px solid;
+}
+
+input {
+    font-size: 20px;
+}
+
+label {
+    font-size: 20px;
+}
+
+.validation {
+    font-size: 15px;
 }
 
 @media (max-width: 767.98px) { 

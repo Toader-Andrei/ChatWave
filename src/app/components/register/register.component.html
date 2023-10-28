@@ -24,6 +24,14 @@
             placeholder="Your email"
             aria-label="Your email"
           />
+          <div
+            *ngIf="
+              myForm.get('email')?.invalid &&
+              (myForm.get('email')?.dirty || myForm.get('email')?.touched)
+            "
+          >
+            <p class="validation mt-2">Please provide a email.</p>
+          </div>
         </div>
 
         <div class="mb-4">
@@ -36,6 +44,15 @@
             placeholder="Your First Name"
             aria-label="Your First Name"
           />
+          <div
+            *ngIf="
+              myForm.get('firstName')?.invalid &&
+              (myForm.get('firstName')?.dirty ||
+                myForm.get('firstName')?.touched)
+            "
+          >
+            <p class="validation mt-2">Please provide a name.</p>
+          </div>
         </div>
 
         <div class="mb-4">
@@ -48,6 +65,14 @@
             placeholder="Your Last Name"
             aria-label="Your Last Name"
           />
+          <div
+            *ngIf="
+              myForm.get('lastName')?.invalid &&
+              (myForm.get('lastName')?.dirty || myForm.get('lastName')?.touched)
+            "
+          >
+            <p class="validation mt-2">Please provide a name.</p>
+          </div>
         </div>
 
         <div class="mb-4">
@@ -63,6 +88,14 @@
             placeholder="6+ characters required"
             aria-label="6+ characters required"
           />
+          <div
+            *ngIf="
+              myForm.get('password')?.invalid &&
+              (myForm.get('password')?.dirty || myForm.get('password')?.touched)
+            "
+          >
+            <p class="validation mt-2">Please provide a password.</p>
+          </div>
         </div>
 
         <div class="d-grid mb-3 mt-5">

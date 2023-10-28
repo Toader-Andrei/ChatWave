@@ -15,6 +15,11 @@ import { AccountsService } from 'src/app/services/accounts.service';
 export class SettingsModalComponent implements OnInit {
   myForm!: FormGroup;
 
+  firstName!: string;
+  lastName!: string;
+  userEmail!: string;
+  userPassword!: string;
+
   constructor(
     private accountsService: AccountsService,
     private fb: FormBuilder
@@ -34,6 +39,14 @@ export class SettingsModalComponent implements OnInit {
         Validators.required,
         Validators.minLength(9),
       ]),
+    });
+
+    const userId = localStorage.getItem('user');
+
+    this.accountsService.getAccounts(userId!).subscribe((user) => {
+      this.firstName = user[0].firstName;
+      this.lastName = user[0].lastName;
+      this.userEmail = user[0].email;
     });
   }
 }

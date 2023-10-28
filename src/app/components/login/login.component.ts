@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           user.email === form.value.email &&
           user.password === form.value.password
         ) {
+          localStorage.setItem('user', JSON.stringify(user.id));
           this.router.navigateByUrl('/overview');
         } else {
           alert('Please enter a valid account');

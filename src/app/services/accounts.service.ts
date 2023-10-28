@@ -19,4 +19,8 @@ export class AccountsService {
   getAccount(user: Partial<Profile>): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.apiUrl + '?email=' + user.email);
   }
+
+  getAccounts(user: string): Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.apiUrl + '?id=' + user);
+  }
 }

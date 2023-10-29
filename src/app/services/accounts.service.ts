@@ -21,6 +21,6 @@ export class AccountsService {
   }
 
   getAccounts(user: string): Observable<Profile[]> {
-    return this.http.get<Profile[]>(this.apiUrl + '?id=' + user);
+    return this.http.get<Profile[]>(this.apiUrl + '/' + user);
   }
 }

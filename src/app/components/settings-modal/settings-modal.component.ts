@@ -40,13 +40,5 @@ export class SettingsModalComponent implements OnInit {
         Validators.minLength(9),
       ]),
     });
-
-    const userId = localStorage.getItem('user');
-
-    this.accountsService.getAccounts(userId!).subscribe((user) => {
-      this.firstName = user[0].firstName;
-      this.lastName = user[0].lastName;
-      this.userEmail = user[0].email;
-    });
   }
 }

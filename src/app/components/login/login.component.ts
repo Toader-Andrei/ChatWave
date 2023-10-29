@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/interfaces/profile.interface';
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           user.email === form.value.email &&
           user.password === form.value.password
         ) {
-          localStorage.setItem('user', JSON.stringify(user.id));
           this.router.navigateByUrl('/overview');
         } else {
           alert('Please enter a valid account');

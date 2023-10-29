@@ -20,20 +20,6 @@
       "email": "malexia1908@icloud.com",
       "password": "parolamea123",
       "id": 3
-    },
-    {
-      "firstName": "Mihai",
-      "lastName": "Vera",
-      "email": "tdasdao@gmail.com",
-      "password": "123123123",
-      "id": 4
-    },
-    {
-      "firstName": "Parolamea",
-      "lastName": "Parola",
-      "email": "example@gmail.com",
-      "password": "123123123",
-      "id": 5
     }
   ]
 }

@@ -26,6 +26,15 @@ export class SettingsModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const user = this.accountsService.user;
+
+    if (user) {
+      this.firstName = user.firstName;
+      this.lastName = user.lastName;
+      this.userEmail = user.email;
+      this.userPassword = user.password;
+    }
+
     this.myForm = this.fb.group({
       currentPassword: new FormControl('', [
         Validators.required,

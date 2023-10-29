@@ -10,17 +10,19 @@ import { Profile } from '../models/interfaces/profile.interface';
 export class AccountsService {
   private apiUrl = 'http://localhost:3000/users';
 
+  user!: Profile;
+
   constructor(private http: HttpClient) {}
 
   registerAccount(user: Profile): Observable<Profile[]> {
     return this.http.post<Profile[]>(this.apiUrl, user);
   }
 
-  getAccount(user: Partial<Profile>): Observable<Profile[]> {
-    return this.http.get<Profile[]>(this.apiUrl + '?email=' + user.email);
+  getAccount(email: string): Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.apiUrl + '?email=' + email);
   }
 
-  getAccounts(user: string): Observable<Profile[]> {
+  getAccounts(user: number): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.apiUrl + '/' + user);
   }
 }

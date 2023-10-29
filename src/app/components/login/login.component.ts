@@ -28,22 +28,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    const user: Partial<Profile> = {
+    const credentials = {
       email: form.value.email,
       password: form.value.password,
     };
 
-    this.accountsService.getAccount(user).subscribe((profile) => {
-      profile.filter((user) => {
+    this.accountsService.getAccount(credentials.email).subscribe((response) => {
+      if (response.length) {
         if (
-          user.email === form.value.email &&
-          user.password === form.value.password
+          response[0].email === form.value.email &&
+          response[0].password === form.value.password
         ) {
+          this.accountsService.user = response[0];
           this.router.navigateByUrl('/overview');
-        } else {
-          alert('Please enter a valid account');
         }
-      });
+      }
     });
   }
 

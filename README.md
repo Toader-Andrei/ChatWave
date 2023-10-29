@@ -5,7 +5,7 @@
 ChatWave is a
 
 - `Register`: Users can create a real account to acces the rest of the fuctionalities from bellow.
-- `Login`: Users can acces their account and enjoy the site
+- `Login`: Users can acces their account and enjoy the application.
 - `c`:
 
 ## PRINT-SCREENS

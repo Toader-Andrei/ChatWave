@@ -7,7 +7,7 @@ import { OverviewComponent } from './views/overview/overview.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'overview',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {

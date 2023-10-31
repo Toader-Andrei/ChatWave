@@ -1,0 +1,113 @@
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Profile } from 'src/app/models/interfaces/profile.interface';
+import { AccountsService } from 'src/app/services/accounts.service';
+
+@Component({
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss'],
+})
+export class SettingsComponent implements OnInit {
+  myForm!: FormGroup;
+  profileForm!: FormGroup;
+
+  firstName!: string;
+  lastName!: string;
+  userEmail!: string;
+  userPassword!: string;
+  userId!: number | undefined;
+
+  objPassword!: Profile;
+
+  constructor(
+    private accountsService: AccountsService,
+    private fb: FormBuilder,
+    private profile: FormBuilder,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit() {
+    const user = this.accountsService.user;
+
+    if (user) {
+      this.firstName = user.firstName;
+      this.lastName = user.lastName;
+      this.userEmail = user.email;
+      this.userPassword = user.password;
+    }
+
+    this.profileForm = this.profile.group({
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      bio: new FormControl('', [Validators.required, Validators.minLength(9)]),
+    });
+
+    this.myForm = this.fb.group({
+      newPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(9),
+      ]),
+    });
+
+    this.profileForm.patchValue({
+      firstName: this.firstName,
+      lastName: this.lastName,
+    });
+  }
+
+  onChangeProfile(form: FormGroup) {
+    const user = this.accountsService.user;
+
+    if (user) {
+      this.accountsService
+        .changeName(
+          user.id as number,
+          form.value.firstName,
+          form.value.lastName,
+          form.value.bio
+        )
+        .subscribe((response) => {
+          response.firstName = form.value.firstName;
+          response.lastName = form.value.lastName;
+          response = form.value.bio;
+
+          this.toastr.success('You have successfully changed your profile.');
+
+          this.profileForm.patchValue({
+            firstName: form.value.firstName,
+            lastName: form.value.lastName,
+          });
+
+          this.firstName = form.value.firstName;
+          this.lastName = form.value.lastName;
+        });
+    }
+  }
+
+  onChangePassword(form: FormGroup) {
+    const user = this.accountsService.user;
+
+    if (user) {
+      this.accountsService
+        .changePassword(user.id as number, form.value.newPassword)
+        .subscribe((response) => {
+          response.password = form.value.newPassword;
+          form.reset();
+          this.toastr.success('You have successfully changed your password.');
+        });
+    }
+  }
+}

@@ -96,26 +96,46 @@
                     class="accordion-collapse collapse show"
                     aria-labelledby="accordion-profile-1"
                     data-parent="#accordion-profile"
+                    [formGroup]="profileForm"
                   >
                     <div class="accordion-body">
                       <div class="form-floating mb-6">
                         <input
                           type="text"
                           class="form-control"
-                          id="profile-name"
+                          id="profile-lastName"
                           placeholder="Name"
+                          formControlName="lastName"
                         />
-                        <label for="profile-name">Name</label>
+                        <label for="profile-name">Last Name</label>
+                        <div
+                          *ngIf="
+                            profileForm.get('lastName')?.invalid &&
+                            (profileForm.get('lastName')?.dirty ||
+                              profileForm.get('lastName')?.touched)
+                          "
+                        >
+                          <p class="validation mt-2">Please provide a name.</p>
+                        </div>
                       </div>
-
                       <div class="form-floating mb-6">
                         <input
                           type="text"
                           class="form-control"
-                          id="profile-phone"
-                          placeholder="Phone"
+                          id="profile-firstName"
+                          placeholder="Name"
+                          formControlName="firstName"
                         />
-                        <label for="profile-phone">Phone</label>
+                        <label for="profile-name">First Name</label>
+                        <div
+                          *ngIf="
+                            profileForm.get('firstName')?.invalid &&
+                            (profileForm.get('firstName')?.dirty ||
+                              profileForm.get('firstName')?.touched)
+                          "
+                        >
+                          <p class="validation mt-2">Please provide a name.</p>
+                        </div>
                       </div>
 
                       <div class="form-floating mb-6">
@@ -131,13 +151,26 @@
                             resize: none;
                             height: 120px;
                           "
+                          formControlName="bio"
                         ></textarea>
                         <label for="profile-bio">Bio</label>
+                        <div
+                          *ngIf="
+                            profileForm.get('bio')?.invalid &&
+                            (profileForm.get('bio')?.dirty ||
+                              profileForm.get('bio')?.touched)
+                          "
+                        >
+                          <p class="validation mt-2">Please provide a bio.</p>
+                        </div>
                       </div>
 
                       <button
                         type="button"
                         class="btn btn-block btn-lg btn-primary w-100"
+                        [disabled]="profileForm.invalid"
+                        [ngClass]="{ opacity: profileForm.invalid }"
+                        (click)="onChangeProfile(profileForm)"
                       >
                         Save
                       </button>
@@ -184,86 +217,36 @@
                     class="accordion-collapse collapse"
                     aria-labelledby="accordion-security-1"
                     data-parent="#accordion-security"
+                    [formGroup]="myForm"
                   >
                     <div class="accordion-body">
-                      <form action="#" autocomplete="on" [formGroup]="myForm">
-                        <div class="form-floating mb-6">
-                          <input
-                            type="password"
-                            class="form-control"
-                            id="profile-current-password"
-                            placeholder="Current Password"
-                            autocomplete=""
-                            formControlName="currentPassword"
-                          />
-                          <label for="profile-current-password"
-                            >Current Password</label
-                          >
-                          <div
-                            *ngIf="
-                              myForm.get('currentPassword')?.invalid &&
-                              (myForm.get('currentPassword')?.dirty ||
-                                myForm.get('currentPassword')?.touched)
-                            "
-                          >
-                            <p class="validation mt-2">
-                              Please provide the password linked with this
-                              account.
-                            </p>
-                          </div>
+                      <div class="form-floating mb-6">
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="profile-new-password"
+                          placeholder="New password"
+                          formControlName="newPassword"
+                        />
+                        <label for="profile-new-password">New password</label>
+                        <div
+                          *ngIf="
+                            myForm.get('newPassword')?.invalid &&
+                            (myForm.get('newPassword')?.dirty ||
+                              myForm.get('newPassword')?.touched)
+                          "
+                        >
+                          <p class="validation mt-2">
+                            Please provide a new password.
+                          </p>
                         </div>
-
-                        <div class="form-floating mb-6">
-                          <input
-                            type="password"
-                            class="form-control"
-                            id="profile-new-password"
-                            placeholder="New password"
-                            autocomplete=""
-                            formControlName="newPassword"
-                          />
-                          <label for="profile-new-password">New password</label>
-                          <div
-                            *ngIf="
-                              myForm.get('newPassword')?.invalid &&
-                              (myForm.get('newPassword')?.dirty ||
-                                myForm.get('newPassword')?.touched)
-                            "
-                          >
-                            <p class="validation mt-2">
-                              Please provide a new password.
-                            </p>
-                          </div>
-                        </div>
-
-                        <div class="form-floating mb-6">
-                          <input
-                            type="password"
-                            class="form-control"
-                            id="profile-verify-password"
-                            placeholder="Verify Password"
-                            autocomplete=""
-                            formControlName="verifyPassword"
-                          />
-                          <label for="profile-verify-password"
-                            >Verify Password</label
-                          >
-                          <div
-                            *ngIf="
-                              myForm.get('verifyPassword')?.invalid &&
-                              (myForm.get('verifyPassword')?.dirty ||
-                                myForm.get('verifyPassword')?.touched)
-                            "
-                          >
-                            <p class="validation mt-2">
-                              Please provide the same password as the new one.
-                            </p>
-                          </div>
-                        </div>
-                      </form>
+                      </div>
                       <button
                         type="button"
                         class="btn btn-block btn-lg btn-primary w-100"
+                        [disabled]="myForm.invalid"
+                        [ngClass]="{ opacity: myForm.invalid }"
+                        (click)="onChangePassword(myForm)"
                       >
                         Save
                       </button>

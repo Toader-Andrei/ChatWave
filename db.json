@@ -1,11 +1,12 @@
 {
   "users": [
     {
-      "firstName": "Andrei Stefan",
-      "lastName": "Toader",
+      "firstName": "Andrei",
+      "lastName": "Iesi",
       "email": "toaderandrei58@gmail.com",
       "password": "mypassword",
-      "id": 1
+      "id": 1,
+      "bio": "31312321321"
     },
     {
       "firstName": "Mihaela",
@@ -21,5 +22,13 @@
       "password": "parolamea123",
       "id": 3
     }
+  ],
+  "notification": [
+    {
+      "id": 1,
+      "password": "Your password has been updated successfully.",
+      "profile": "Your password has been updated profile."
+    }
   ]
+
 }

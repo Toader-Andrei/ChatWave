@@ -25,4 +25,23 @@ export class AccountsService {
   getAccounts(user: number): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.apiUrl + '/' + user);
   }
+
+  changeName(
+    id: number,
+    firstName: Profile,
+    lastName: Profile,
+    bio: Profile
+  ): Observable<Profile> {
+    return this.http.patch<Profile>(this.apiUrl + '/' + id, {
+      firstName: firstName,
+      lastName: lastName,
+      bio: bio,
+    });
+  }
+
+  changePassword(id: number, password: Profile): Observable<Profile> {
+    return this.http.patch<Profile>(this.apiUrl + '/' + id, {
+      password: password,
+    });
+  }
 }

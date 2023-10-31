@@ -1,0 +1,21 @@
+input.ng-invalid.ng-touched {
+    border: red 1px solid;
+}
+input.ng-dirty.ng-valid{
+    border: green 1px solid;
+}
+
+textarea.ng-invalid.ng-touched {
+    border: red 1px solid;
+}
+textarea.ng-dirty.ng-valid{
+    border: green 1px solid;
+}
+
+.validation {
+    font-size: 15px;
+}
+
+.opacity {
+    opacity: 0.1;
+}

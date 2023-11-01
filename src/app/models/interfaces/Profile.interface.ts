@@ -3,5 +3,5 @@ export interface Profile {
   lastName: string;
   email: string;
   password: string;
-  id?: number;
+  id: number;
 }

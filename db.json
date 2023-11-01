@@ -2,11 +2,11 @@
   "users": [
     {
       "firstName": "Andrei",
-      "lastName": "Iesi",
+      "lastName": "Toader",
       "email": "toaderandrei58@gmail.com",
       "password": "mypassword",
       "id": 1,
-      "bio": "31312321321"
+      "bio": "imi place ciorba de burta"
     },
     {
       "firstName": "Mihaela",
@@ -23,12 +23,48 @@
       "id": 3
     }
   ],
-  "notification": [
+  "notifications": [
     {
-      "id": 1,
-      "password": "Your password has been updated successfully.",
-      "profile": "Your password has been updated profile."
+      "description": "You have successfully changed your password.",
+      "userId": 1,
+      "date": "11/1/2023, 4:14:28 PM",
+      "type": 2,
+      "id": 1
+    },
+    {
+      "description": "You have successfully changed your password.",
+      "userId": 1,
+      "date": "11/1/2023, 6:09:51 PM",
+      "type": 2,
+      "id": 2
+    },
+    {
+      "description": "You have successfully changed your password.",
+      "userId": 1,
+      "date": "11/1/2023, 6:50:54 PM",
+      "type": 2,
+      "id": 3
+    },
+    {
+      "description": "You have successfully changed your password.",
+      "userId": 1,
+      "date": "11/1/2023, 6:53:31 PM",
+      "type": 2,
+      "id": 4
+    },
+    {
+      "description": "You have successfully changed your password.",
+      "userId": 1,
+      "date": "11/1/2023, 9:00:56 PM",
+      "type": 2,
+      "id": 5
+    },
+    {
+      "description": "You have successfully changed your profile.",
+      "userId": 1,
+      "date": "11/1/2023, 9:23:42 PM",
+      "type": 1,
+      "id": 6
     }
   ]
-
 }

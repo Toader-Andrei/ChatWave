@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { NotificationType } from 'src/app/models/interfaces/notifcation-type.enum';
 import { Profile } from 'src/app/models/interfaces/profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 
@@ -93,6 +94,18 @@ export class SettingsComponent implements OnInit {
 
           this.firstName = form.value.firstName;
           this.lastName = form.value.lastName;
+
+          const date = new Date().toLocaleString();
+
+          const description = 'You have successfully changed your profile.';
+          this.accountsService
+            .createNotification(
+              description,
+              user.id,
+              date,
+              NotificationType.ProfileChange
+            )
+            .subscribe();
         });
     }
   }
@@ -107,6 +120,18 @@ export class SettingsComponent implements OnInit {
           response.password = form.value.newPassword;
           form.reset();
           this.toastr.success('You have successfully changed your password.');
+
+          const date = new Date().toLocaleString();
+
+          const description = 'You have successfully changed your password.';
+          this.accountsService
+            .createNotification(
+              description,
+              user.id,
+              date,
+              NotificationType.PasswordChange
+            )
+            .subscribe();
         });
     }
   }

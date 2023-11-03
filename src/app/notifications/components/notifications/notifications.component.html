@@ -40,7 +40,14 @@
         </form>
       </div>
 
-      <app-notification></app-notification>
+      <div class="card-list">
+        <div *ngFor="let notification of notifications">
+          <app-notification
+            [data]="notification"
+            (onDelete)="onNotificationDelete($event)"
+          ></app-notification>
+        </div>
+      </div>
     </div>
   </div>
 </div>

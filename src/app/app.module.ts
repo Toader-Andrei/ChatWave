@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ConversationsComponent } from './components/conversations/conversations.component';
-import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -15,18 +14,17 @@ import { OverviewComponent } from './views/overview/overview.component';
 import { NavigatorComponent } from './components/navigator/navigator.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ProfileModalComponent } from './components/profile-modal/profile-modal.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { NotificationComponent } from './components/notification/notification.component';
+import { ChatsComponent } from './components/chats/chats.component';
+import { CreateChatComponent } from './components/create-chat/create-chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     ConversationsComponent,
-    ChatListComponent,
     ChatComponent,
     LoginComponent,
     RegisterComponent,
@@ -34,8 +32,8 @@ import { NotificationComponent } from './components/notification/notification.co
     NavigatorComponent,
     SettingsComponent,
     ProfileModalComponent,
-    NotificationsComponent,
-    NotificationComponent,
+    ChatsComponent,
+    CreateChatComponent,
   ],
   imports: [
     BrowserModule,

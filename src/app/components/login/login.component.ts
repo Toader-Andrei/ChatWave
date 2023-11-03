@@ -12,6 +12,8 @@ import { AccountsService } from 'src/app/services/accounts.service';
 export class LoginComponent implements OnInit {
   myForm!: FormGroup;
 
+  passwordValidator: boolean = true;
+
   constructor(
     private router: Router,
     private accountsService: AccountsService
@@ -19,28 +21,45 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      email: new FormControl(null, [
+        Validators.required,
+        Validators.email,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      ]),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(9),
       ]),
+      remember: new FormControl(false),
     });
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit() {
+    this.passwordValidator = false;
+
     const credentials = {
-      email: form.value.email,
-      password: form.value.password,
+      email: this.myForm.value.email,
+      password: this.myForm.value.password,
     };
 
     this.accountsService.getAccount(credentials.email).subscribe((response) => {
       if (response.length) {
         if (
-          response[0].email === form.value.email &&
-          response[0].password === form.value.password
+          response[0].email === this.myForm.value.email &&
+          response[0].password === this.myForm.value.password
         ) {
-          this.accountsService.user = response[0];
-          this.router.navigateByUrl('/overview');
+          if (response[0].password !== this.myForm.value.password) {
+            this.passwordValidator = false;
+          } else {
+            this.passwordValidator = true;
+            if (this.myForm.value.remember) {
+              localStorage.setItem('isLogged', 'true');
+              this.accountsService.setIsLogged();
+            }
+
+            this.accountsService.user = response[0];
+            this.router.navigateByUrl('/overview');
+          }
         }
       }
     });

@@ -3,20 +3,27 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Profile } from '../models/interfaces/profile.interface';
-import { Notification } from '../models/interfaces/notification.interface';
-import { NotificationType } from '../models/interfaces/notifcation-type.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountsService {
   private userUrl = 'http://localhost:3000/users';
-  private notificationUrl = 'http://localhost:3000/notifications';
+  private isLogged = false;
 
   user!: Profile;
-  notification!: Notification;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.isLogged = !!localStorage.getItem('isLogged');
+  }
+
+  isLoggedIn(): boolean {
+    return this.isLogged;
+  }
+
+  setIsLogged(): void {
+    this.isLogged = true;
+  }
 
   registerAccount(user: Partial<Profile>): Observable<Profile[]> {
     return this.http.post<Profile[]>(this.userUrl, user);
@@ -46,20 +53,6 @@ export class AccountsService {
   changePassword(id: number, password: Profile): Observable<Profile> {
     return this.http.patch<Profile>(this.userUrl + '/' + id, {
       password: password,
-    });
-  }
-
-  createNotification(
-    description: string,
-    userId: number,
-    date: string,
-    type: NotificationType
-  ): Observable<Notification> {
-    return this.http.post<Notification>(this.notificationUrl, {
-      description: description,
-      userId: userId,
-      date: date,
-      type: type,
     });
   }
 }

@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "firstName": "Andrei",
+      "firstName": "Andrei Stefan",
       "lastName": "Toader",
       "email": "toaderandrei58@gmail.com",
       "password": "mypassword",
       "id": 1,
-      "bio": "imi place ciorba de burta"
+      "bio": "dsadsadsadsa"
     },
     {
       "firstName": "Mihaela",
@@ -34,13 +34,6 @@
     {
       "description": "You have successfully changed your password.",
       "userId": 1,
-      "date": "11/1/2023, 6:09:51 PM",
-      "type": 2,
-      "id": 2
-    },
-    {
-      "description": "You have successfully changed your password.",
-      "userId": 1,
       "date": "11/1/2023, 6:50:54 PM",
       "type": 2,
       "id": 3
@@ -60,11 +53,39 @@
       "id": 5
     },
     {
+      "description": "You have successfully changed your password.",
+      "userId": 1,
+      "date": "11/1/2023, 11:37:17 PM",
+      "type": 2,
+      "id": 8
+    },
+    {
       "description": "You have successfully changed your profile.",
       "userId": 1,
-      "date": "11/1/2023, 9:23:42 PM",
+      "date": "11/2/2023, 2:46:05 PM",
       "type": 1,
-      "id": 6
+      "id": 9
+    },
+    {
+      "description": "You have successfully changed your profile.",
+      "userId": 1,
+      "date": "11/2/2023, 2:46:21 PM",
+      "type": 1,
+      "id": 10
+    },
+    {
+      "description": "You have successfully changed your profile.",
+      "userId": 1,
+      "date": "11/2/2023, 2:46:47 PM",
+      "type": 1,
+      "id": 11
+    },
+    {
+      "description": "You have successfully changed your profile.",
+      "userId": 1,
+      "date": "11/2/2023, 3:11:18 PM",
+      "type": 1,
+      "id": 12
     }
   ]
 }

@@ -6,9 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { NotificationType } from 'src/app/models/interfaces/notifcation-type.enum';
+import { NotificationType } from 'src/app/notifications/models/notification-type.enum';
 import { Profile } from 'src/app/models/interfaces/profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { NotificationsService } from 'src/app/notifications/services/notifications.service';
 
 @Component({
   selector: 'app-settings',
@@ -29,6 +30,7 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private accountsService: AccountsService,
+    private notificationsService: NotificationsService,
     private fb: FormBuilder,
     private profile: FormBuilder,
     private toastr: ToastrService
@@ -98,7 +100,7 @@ export class SettingsComponent implements OnInit {
           const date = new Date().toLocaleString();
 
           const description = 'You have successfully changed your profile.';
-          this.accountsService
+          this.notificationsService
             .createNotification(
               description,
               user.id,
@@ -124,7 +126,7 @@ export class SettingsComponent implements OnInit {
           const date = new Date().toLocaleString();
 
           const description = 'You have successfully changed your password.';
-          this.accountsService
+          this.notificationsService
             .createNotification(
               description,
               user.id,

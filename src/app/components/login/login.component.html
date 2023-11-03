@@ -3,7 +3,7 @@
     <img src="assets/img/logo/logo.png" alt="" class="icon" />
   </div>
   <div class="col-sm-12 col-md-6 form-container">
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <div class="d-flex justify-content-center align-items-center">
         <div class="flex-grow-1 container">
           <div class="text-center mb-5 mb-md-7">
@@ -20,7 +20,6 @@
               formControlName="email"
               placeholder="Your email"
               aria-label="Your email"
-              required=""
             />
             <div
               *ngIf="
@@ -42,7 +41,6 @@
               id="signupModalFormLoginPassword"
               placeholder="9+ characters required"
               aria-label="9+ characters required"
-              required=""
             />
             <div
               *ngIf="
@@ -53,6 +51,24 @@
             >
               <p class="validation mt-2">Please provide a password.</p>
             </div>
+            <div *ngIf="!passwordValidator">
+              <p class="validation mt-2">
+                Please provide the password associated with this email.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-check d-flex align-items-center mx-5 px-5">
+            <input
+              class="form-check-input me-2"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+              formControlName="remember"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Remember Me
+            </label>
           </div>
 
           <div class="d-grid mb-3">

@@ -59,11 +59,9 @@
     <li class="nav-item">
       <a
         class="nav-link py-0 py-lg-8"
-        id="tab-create-chat"
-        href="#tab-content-create-chat"
         title="Create chat"
-        data-bs-toggle="tab"
-        role="tab"
+        routerLink="create-chat"
+        routerLinkActive="active"
       >
         <div class="icon icon-xl">
           <svg
@@ -90,12 +88,10 @@
     <!-- Chats -->
     <li class="nav-item">
       <a
-        class="nav-link active py-0 py-lg-8"
-        id="tab-chats"
-        href="#tab-content-chats"
+        class="nav-link py-0 py-lg-8"
         title="Chats"
-        data-bs-toggle="tab"
-        role="tab"
+        routerLink="chats"
+        routerLinkActive="active"
       >
         <div class="icon icon-xl icon-badged">
           <svg
@@ -122,18 +118,12 @@
     </li>
 
     <!-- Notification -->
-    <li
-      class="nav-item d-none d-xl-block flex-xl-grow-1"
-      (click)="getNotification()"
-    >
+    <li class="nav-item d-none d-xl-block flex-xl-grow-1">
       <a
         class="nav-link py-0 py-lg-8"
-        id="tab-notifications"
-        href="#tab-content-notifications"
         title="Notifications"
-        data-bs-toggle="tab"
-        role="tab"
-        aria-selected="false"
+        routerLink="notifications"
+        routerLinkActive="active"
       >
         <div class="icon icon-xl">
           <svg
@@ -159,11 +149,9 @@
     <li class="nav-item">
       <a
         class="nav-link py-0 py-lg-8"
-        id="tab-settings"
-        href="#tab-content-settings"
         title="Settings"
-        data-bs-toggle="tab"
-        role="tab"
+        routerLink="settings"
+        routerLinkActive="active"
       >
         <div class="icon icon-xl">
           <svg

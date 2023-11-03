@@ -27,23 +27,32 @@ export class RegisterComponent implements OnInit {
     this.myForm = this.fb.group({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(9),
       ]),
+      remember: new FormControl(false),
     });
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit() {
     const user = {
-      firstName: form.value.firstName,
-      lastName: form.value.lastName,
-      email: form.value.email,
-      password: form.value.password,
+      firstName: this.myForm.value.firstName,
+      lastName: this.myForm.value.lastName,
+      email: this.myForm.value.email,
+      password: this.myForm.value.password,
     };
 
     this.accountsService.registerAccount(user).subscribe(() => {
+      if (this.myForm.value.remember) {
+        localStorage.setItem('isLogged', 'true');
+        this.accountsService.setIsLogged();
+      }
       this.router.navigateByUrl('/overview');
     });
   }

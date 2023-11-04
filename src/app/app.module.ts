@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ConversationsComponent } from './components/conversations/conversations.component';
-import { ChatComponent } from './components/chat/chat.component';
+import { ChatComponent } from './chats/components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { OverviewComponent } from './views/overview/overview.component';
@@ -17,7 +17,7 @@ import { ProfileModalComponent } from './components/profile-modal/profile-modal.
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { ChatsComponent } from './components/chats/chats.component';
+import { ChatsComponent } from './chats/components/chats/chats.component';
 import { CreateChatComponent } from './components/create-chat/create-chat.component';
 
 @NgModule({

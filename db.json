@@ -16,11 +16,12 @@
       "id": 2
     },
     {
-      "firstName": "Alexia-Maria",
-      "lastName": "Lapusan",
+      "firstName": "Alexia",
+      "lastName": "Toader",
       "email": "malexia1908@icloud.com",
       "password": "parolamea123",
-      "id": 3
+      "id": 3,
+      "bio": "sexy si rea"
     }
   ],
   "notifications": [
@@ -86,6 +87,13 @@
       "date": "11/2/2023, 3:11:18 PM",
       "type": 1,
       "id": 12
+    },
+    {
+      "description": "You have successfully changed your profile.",
+      "userId": 3,
+      "date": "11/3/2023, 1:16:39 PM",
+      "type": 1,
+      "id": 13
     }
   ]
 }

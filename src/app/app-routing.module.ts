@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { OverviewComponent } from './views/overview/overview.component';
 import { AuthGuard } from './auth.guard';
 import { CreateChatComponent } from './components/create-chat/create-chat.component';
-import { ChatsComponent } from './components/chats/chats.component';
+import { ChatsComponent } from './chats/components/chats/chats.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [

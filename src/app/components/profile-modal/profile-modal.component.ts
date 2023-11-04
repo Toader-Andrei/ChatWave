@@ -28,6 +28,9 @@ export class ProfileModalComponent {
       this.userEmail = user.email;
       this.userPassword = user.password;
     }
-    console.log(user);
+  }
+
+  logoutClick() {
+    localStorage.removeItem('isLogged');
   }
 }

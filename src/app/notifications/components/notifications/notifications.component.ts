@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Notification } from '../../models/notification.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { NotificationsService } from '../../services/notifications.service';
@@ -8,7 +8,7 @@ import { NotificationsService } from '../../services/notifications.service';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
 })
-export class NotificationsComponent implements OnInit, OnDestroy {
+export class NotificationsComponent implements OnInit {
   notifications: Notification[] = [];
 
   constructor(
@@ -30,9 +30,5 @@ export class NotificationsComponent implements OnInit, OnDestroy {
     this.notifications = this.notifications.filter((notif) => {
       return notif.id !== id;
     });
-  }
-
-  ngOnDestroy(): void {
-    console.log('destroyed');
   }
 }

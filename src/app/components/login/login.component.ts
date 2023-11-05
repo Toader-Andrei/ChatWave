@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Profile } from 'src/app/models/interfaces/profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 
 @Component({

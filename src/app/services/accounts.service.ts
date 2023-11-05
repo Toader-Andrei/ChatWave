@@ -25,6 +25,10 @@ export class AccountsService {
     this.isLogged = true;
   }
 
+  getProfiles(): Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.userUrl);
+  }
+
   registerAccount(user: Partial<Profile>): Observable<Profile[]> {
     return this.http.post<Profile[]>(this.userUrl, user);
   }

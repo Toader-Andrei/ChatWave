@@ -6,7 +6,8 @@ import { OverviewComponent } from './views/overview/overview.component';
 import { AuthGuard } from './auth.guard';
 import { CreateChatComponent } from './components/create-chat/create-chat.component';
 import { ChatsComponent } from './chats/components/chats/chats.component';
-import { SettingsComponent } from './components/settings/settings.component';
+import { SettingsComponent } from './settings/components/settings/settings.component';
+import { FriendsComponent } from './friends/friends/friends.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,12 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent,
+      },
+      {
+        path: 'friends',
+        loadChildren: () =>
+          import('./friends/friends.module').then((m) => m.FriendsModule),
+        component: FriendsComponent,
       },
     ],
   },

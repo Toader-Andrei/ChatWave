@@ -10,6 +10,7 @@ import { NotificationType } from 'src/app/notifications/models/notification-type
 import { Profile } from 'src/app/models/interfaces/profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { NotificationsService } from 'src/app/notifications/services/notifications.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -24,16 +25,14 @@ export class SettingsComponent implements OnInit {
   lastName!: string;
   userEmail!: string;
   userPassword!: string;
-  userId!: number | undefined;
-
-  objPassword!: Profile;
 
   constructor(
     private accountsService: AccountsService,
     private notificationsService: NotificationsService,
     private fb: FormBuilder,
     private profile: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -55,7 +54,7 @@ export class SettingsComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
       ]),
-      bio: new FormControl('', [Validators.required, Validators.minLength(9)]),
+      bio: new FormControl(''),
     });
 
     this.myForm = this.fb.group({
@@ -136,5 +135,10 @@ export class SettingsComponent implements OnInit {
             .subscribe();
         });
     }
+  }
+
+  logoutClick() {
+    localStorage.removeItem('isLogged');
+    this.router.navigateByUrl('/login');
   }
 }

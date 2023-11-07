@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NotificationType } from 'src/app/notifications/models/notification-type.enum';
-import { Profile } from 'src/app/models/interfaces/profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { NotificationsService } from 'src/app/notifications/services/notifications.service';
 import { Router } from '@angular/router';
@@ -138,7 +137,7 @@ export class SettingsComponent implements OnInit {
   }
 
   logoutClick() {
-    localStorage.removeItem('isLogged');
+    localStorage.removeItem('user');
     this.router.navigateByUrl('/login');
   }
 }

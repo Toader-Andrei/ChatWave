@@ -6,7 +6,8 @@
       "email": "toaderandrei58@gmail.com",
       "password": "mypassword",
       "id": 1,
-      "bio": "e"
+      "bio": "e",
+      "blockedIds": []
     },
     {
       "firstName": "Mihaela",
@@ -14,7 +15,8 @@
       "email": "t.mihaela66@yahoo.com",
       "password": "parolamea123",
       "id": 2,
-      "bio": "bai"
+      "bio": "bai",
+      "blockedIds": []
     },
     {
       "firstName": "Alexia",
@@ -22,14 +24,16 @@
       "email": "malexia1908@icloud.com",
       "password": "parolamea123",
       "id": 3,
-      "bio": "bea"
+      "bio": "bea",
+      "blockedIds": []
     },
     {
       "firstName": "ale",
       "lastName": "nico",
       "email": "alexandratoader66@yahoo.ro",
       "password": "Andrei.12580",
-      "id": 4
+      "id": 4,
+      "blockedIds": []
     }
   ],
   "notifications": [
@@ -67,174 +71,6 @@
       "date": "11/4/2023, 2:58:48 PM",
       "type": 1,
       "id": 17
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 2:58:50 PM",
-      "type": 1,
-      "id": 18
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 3:03:20 PM",
-      "type": 1,
-      "id": 19
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 3:15:41 PM",
-      "type": 1,
-      "id": 20
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 3:15:42 PM",
-      "type": 1,
-      "id": 21
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 3:15:43 PM",
-      "type": 1,
-      "id": 22
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 3:15:51 PM",
-      "type": 1,
-      "id": 23
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 3:31:37 PM",
-      "type": 1,
-      "id": 24
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 6:10:25 PM",
-      "type": 1,
-      "id": 25
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:35:22 AM",
-      "type": 1,
-      "id": 26
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:36:14 AM",
-      "type": 1,
-      "id": 27
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:38:17 AM",
-      "type": 1,
-      "id": 28
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:44:08 AM",
-      "type": 1,
-      "id": 29
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 1:02:00 AM",
-      "type": 1,
-      "id": 30
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 1:04:37 AM",
-      "type": 1,
-      "id": 31
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 1:06:42 AM",
-      "type": 1,
-      "id": 32
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 10:59:20 AM",
-      "type": 1,
-      "id": 33
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 11:05:53 AM",
-      "type": 1,
-      "id": 34
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 11:55:50 AM",
-      "type": 1,
-      "id": 35
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:03:24 PM",
-      "type": 1,
-      "id": 36
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:07:46 PM",
-      "type": 1,
-      "id": 37
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:07:54 PM",
-      "type": 1,
-      "id": 38
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:07:58 PM",
-      "type": 1,
-      "id": 39
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:08:05 PM",
-      "type": 1,
-      "id": 40
-    },
-    {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/5/2023, 12:08:09 PM",
-      "type": 1,
-      "id": 41
     }
   ]
 }

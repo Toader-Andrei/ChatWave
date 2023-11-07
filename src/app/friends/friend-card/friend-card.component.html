@@ -1,15 +1,18 @@
-<div class="card border-0" *ngIf="users">
-  <div class="card-body" *ngFor="let user of users">
+<div class="card border-0" *ngIf="user && loggedUser">
+  <div
+    class="card-body"
+    [ngClass]="{ 'user-blocked': loggedUser.blockedIds.includes(user.id) }"
+  >
     <div class="row align-items-center gx-5">
       <div class="col-auto">
-        <a href="#" class="avatar">
-          <img class="avatar-img" src="assets/img/avatars/6.jpg" alt="" />
+        <a class="avatar">
+          <img class="avatar-img" src="assets/img/avatars/6.jpg" />
         </a>
       </div>
 
       <div class="col">
         <h5>
-          <a href="#">{{ user.firstName + " " + user.lastName }}</a>
+          <a>{{ user.firstName + " " + user.lastName }}</a>
           <p class="text-muted">{{ user.bio }}</p>
         </h5>
       </div>
@@ -19,7 +22,6 @@
         <div class="dropdown">
           <a
             class="icon text-muted"
-            href="#"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -43,15 +45,17 @@
           </a>
 
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">New message</a></li>
-            <li>
-              <a class="dropdown-item" href="#">Edit contact</a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li>
-              <a class="dropdown-item text-danger" href="#">Block user</a>
+            <li (click)="blockUser()">
+              <a
+                class="dropdown-item text-danger"
+                *ngIf="!loggedUser.blockedIds.includes(user.id)"
+                >Block user</a
+              >
+              <a
+                class="dropdown-item text-danger"
+                *ngIf="loggedUser.blockedIds.includes(user.id)"
+                >Unblock user</a
+              >
             </li>
           </ul>
         </div>

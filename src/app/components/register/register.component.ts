@@ -50,9 +50,10 @@ export class RegisterComponent implements OnInit {
 
     this.accountsService.registerAccount(user).subscribe(() => {
       if (this.myForm.value.remember) {
-        localStorage.setItem('isLogged', 'true');
-        this.accountsService.setIsLogged();
+        localStorage.setItem('user', JSON.stringify(user));
       }
+
+      this.accountsService.setIsLogged();
       this.router.navigateByUrl('/overview');
     });
   }

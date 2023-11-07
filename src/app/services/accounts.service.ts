@@ -14,7 +14,7 @@ export class AccountsService {
   user!: Profile;
 
   constructor(private http: HttpClient) {
-    this.isLogged = !!localStorage.getItem('isLogged');
+    this.isLogged = !!localStorage.getItem('user');
   }
 
   isLoggedIn(): boolean {
@@ -27,6 +27,10 @@ export class AccountsService {
 
   getProfiles(): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.userUrl);
+  }
+
+  searchProfile(value: string): Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.userUrl + '?q=' + value);
   }
 
   registerAccount(user: Partial<Profile>): Observable<Profile[]> {
@@ -57,6 +61,12 @@ export class AccountsService {
   changePassword(id: number, password: Profile): Observable<Profile> {
     return this.http.patch<Profile>(this.userUrl + '/' + id, {
       password: password,
+    });
+  }
+
+  addBlockedUser(id: number, blockedUserId: Profile): Observable<Profile> {
+    return this.http.patch<Profile>(this.userUrl + '/' + id, {
+      blockedIds: blockedUserId,
     });
   }
 }

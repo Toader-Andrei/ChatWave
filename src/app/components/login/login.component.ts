@@ -11,7 +11,7 @@ import { AccountsService } from 'src/app/services/accounts.service';
 export class LoginComponent implements OnInit {
   myForm!: FormGroup;
 
-  passwordValidator: boolean = true;
+  passwordValidator!: boolean;
 
   constructor(
     private router: Router,
@@ -34,34 +34,23 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.passwordValidator = false;
-
-    const credentials = {
-      email: this.myForm.value.email,
-      password: this.myForm.value.password,
-    };
-
-    this.accountsService.getAccount(credentials.email).subscribe((response) => {
-      if (response.length) {
-        if (
-          response[0].email === this.myForm.value.email &&
-          response[0].password === this.myForm.value.password
-        ) {
-          if (response[0].password !== this.myForm.value.password) {
-            this.passwordValidator = false;
-          } else {
-            this.passwordValidator = true;
+    this.accountsService
+      .getAccount(this.myForm.value.email)
+      .subscribe((response) => {
+        if (response.length) {
+          if (
+            response[0].email === this.myForm.value.email &&
+            response[0].password === this.myForm.value.password
+          ) {
             if (this.myForm.value.remember) {
-              localStorage.setItem('isLogged', 'true');
-              this.accountsService.setIsLogged();
+              localStorage.setItem('user', JSON.stringify(response[0]));
             }
-
+            this.accountsService.setIsLogged();
             this.accountsService.user = response[0];
             this.router.navigateByUrl('/overview');
           }
         }
-      }
-    });
+      });
   }
 
   redirect() {

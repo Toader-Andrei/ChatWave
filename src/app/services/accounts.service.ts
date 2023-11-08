@@ -64,9 +64,13 @@ export class AccountsService {
     });
   }
 
-  addBlockedUser(id: number, blockedUserId: Profile): Observable<Profile> {
+  getBlockedUsersFromLoggedUser(id: number): Observable<Profile> {
+    return this.http.get<Profile>(this.userUrl + '/' + id);
+  }
+
+  addBlockedUser(id: number, blockedUserIds: number[]): Observable<Profile> {
     return this.http.patch<Profile>(this.userUrl + '/' + id, {
-      blockedIds: blockedUserId,
+      blockedIds: blockedUserIds,
     });
   }
 }

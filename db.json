@@ -7,7 +7,11 @@
       "password": "mypassword",
       "id": 1,
       "bio": "e",
-      "blockedIds": []
+      "blockedIds": [
+        2,
+        3,
+        4
+      ]
     },
     {
       "firstName": "Mihaela",

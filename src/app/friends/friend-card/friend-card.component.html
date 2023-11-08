@@ -1,4 +1,4 @@
-<div class="card border-0" *ngIf="user && loggedUser">
+<div class="card border-0 mt-4" *ngIf="user && loggedUser">
   <div
     class="card-body"
     [ngClass]="{ 'user-blocked': loggedUser.blockedIds.includes(user.id) }"

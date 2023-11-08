@@ -18,14 +18,11 @@ export class FriendCardComponent {
   }
 
   blockUser() {
-    const activeUser = this.accountsService.user;
-
-    if (activeUser) {
-      this.accountsService.getAccounts(activeUser.id).subscribe((a) => {
-        this.accountsService.getProfiles().subscribe((B) => {
-          console.log(B);
-        });
-      });
+    if (this.loggedUser) {
+      this.loggedUser.blockedIds.push(this.user.id);
+      this.accountsService
+        .addBlockedUser(this.loggedUser.id, this.loggedUser.blockedIds)
+        .subscribe(() => {});
     }
   }
 }

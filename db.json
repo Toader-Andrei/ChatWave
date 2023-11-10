@@ -8,7 +8,6 @@
       "id": 1,
       "bio": "e",
       "blockedIds": [
-        2,
         3,
         4
       ]

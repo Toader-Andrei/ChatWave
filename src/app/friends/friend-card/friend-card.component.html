@@ -45,13 +45,15 @@
           </a>
 
           <ul class="dropdown-menu">
-            <li (click)="blockUser()">
+            <li>
               <a
+                (click)="blockUser()"
                 class="dropdown-item text-danger"
                 *ngIf="!loggedUser.blockedIds.includes(user.id)"
                 >Block user</a
               >
               <a
+                (click)="unBlockUser()"
                 class="dropdown-item text-danger"
                 *ngIf="loggedUser.blockedIds.includes(user.id)"
                 >Unblock user</a

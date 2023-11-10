@@ -22,7 +22,20 @@ export class FriendCardComponent {
       this.loggedUser.blockedIds.push(this.user.id);
       this.accountsService
         .addBlockedUser(this.loggedUser.id, this.loggedUser.blockedIds)
-        .subscribe(() => {});
+        .subscribe();
+    }
+  }
+
+  unBlockUser() {
+    if (this.loggedUser.blockedIds.includes(this.user.id)) {
+      const newListAfterUnblock = this.loggedUser.blockedIds.filter((res) => {
+        return res !== this.user.id;
+      });
+      this.loggedUser.blockedIds = newListAfterUnblock;
+
+      this.accountsService
+        .addBlockedUser(this.loggedUser.id, newListAfterUnblock)
+        .subscribe();
     }
   }
 }

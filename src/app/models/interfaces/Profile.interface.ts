@@ -6,4 +6,6 @@ export interface Profile {
   id: number;
   bio: string;
   blockedIds: number[];
+  friendIds: number[];
+  friendRequestIds: number[];
 }

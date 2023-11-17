@@ -73,4 +73,10 @@ export class AccountsService {
       blockedIds: blockedUserIds,
     });
   }
+
+  addFriendId(id: number, friendIds: number[]): Observable<Profile> {
+    return this.http.patch<Profile>(this.userUrl + '/' + id, {
+      friendIds: friendIds,
+    });
+  }
 }

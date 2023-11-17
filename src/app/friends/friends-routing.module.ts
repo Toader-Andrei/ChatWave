@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FriendCardComponent } from './friend-card/friend-card.component';
+import { FriendsComponent } from './friends/friends.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: FriendCardComponent,
+    component: FriendsComponent,
   },
 ];
 

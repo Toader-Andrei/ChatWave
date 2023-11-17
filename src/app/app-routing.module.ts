@@ -56,7 +56,6 @@ const routes: Routes = [
         path: 'friends',
         loadChildren: () =>
           import('./friends/friends.module').then((m) => m.FriendsModule),
-        component: FriendsComponent,
       },
     ],
   },

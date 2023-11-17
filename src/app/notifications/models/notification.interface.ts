@@ -6,4 +6,6 @@ export interface Notification {
   date: string;
   type: NotificationType;
   id: number;
+  firstName?: string;
+  lastName?: string;
 }

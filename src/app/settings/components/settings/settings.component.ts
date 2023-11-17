@@ -10,6 +10,7 @@ import { NotificationType } from 'src/app/notifications/models/notification-type
 import { AccountsService } from 'src/app/services/accounts.service';
 import { NotificationsService } from 'src/app/notifications/services/notifications.service';
 import { Router } from '@angular/router';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-settings',

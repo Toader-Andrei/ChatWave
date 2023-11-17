@@ -57,6 +57,9 @@
             <span *ngIf="data.type === typeEnum.PasswordChange"
               >Password changed!</span
             >
+            <span *ngIf="data.type === typeEnum.FriendRequest">{{
+              data.firstName + " " + data.lastName
+            }}</span>
           </h5>
           <span class="extra-small text-muted ms-2">{{
             data.date | date : "dd/MM/yy"
@@ -65,38 +68,30 @@
 
         <div class="d-flex">
           <div class="me-auto">{{ data.description }}</div>
-
-          <div class="dropdown ms-5">
-            <a
-              class="icon text-muted"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-more-horizontal"
-              >
-                <circle cx="12" cy="12" r="1"></circle>
-                <circle cx="19" cy="12" r="1"></circle>
-                <circle cx="5" cy="12" r="1"></circle>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" (click)="onDeleteClick()">Hide</a>
-              </li>
-            </ul>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div
+    _ngcontent-ng-c1277516133=""
+    class="card-footer"
+    *ngIf="data.type === typeEnum.FriendRequest"
+  >
+    <div _ngcontent-ng-c1277516133="" class="row gx-4">
+      <div _ngcontent-ng-c1277516133="" class="col">
+        <a
+          _ngcontent-ng-c1277516133=""
+          class="btn btn-sm btn-soft-primary w-100"
+          >Hide</a
+        >
+      </div>
+      <div _ngcontent-ng-c1277516133="" class="col">
+        <a
+          _ngcontent-ng-c1277516133=""
+          class="btn btn-sm btn-primary w-100"
+          (click)="confirmFriendRequest()"
+          >Confirm</a
+        >
       </div>
     </div>
   </div>

@@ -8,9 +8,13 @@
       "id": 1,
       "bio": "e",
       "blockedIds": [
-        3,
-        4
-      ]
+        2
+      ],
+      "friendIds": [
+        4,
+        3
+      ],
+      "friendRequestIds": []
     },
     {
       "firstName": "Mihaela",
@@ -19,7 +23,9 @@
       "password": "parolamea123",
       "id": 2,
       "bio": "bai",
-      "blockedIds": []
+      "blockedIds": [],
+      "friendIds": [],
+      "friendRequestIds": []
     },
     {
       "firstName": "Alexia",
@@ -28,7 +34,14 @@
       "password": "parolamea123",
       "id": 3,
       "bio": "bea",
-      "blockedIds": []
+      "blockedIds": [
+        5,
+        1
+      ],
+      "friendIds": [
+        5
+      ],
+      "friendRequestIds": []
     },
     {
       "firstName": "ale",
@@ -36,7 +49,12 @@
       "email": "alexandratoader66@yahoo.ro",
       "password": "Andrei.12580",
       "id": 4,
-      "blockedIds": []
+      "bio": "bea",
+      "blockedIds": [],
+      "friendIds": [
+        6
+      ],
+      "friendRequestIds": []
     }
   ],
   "notifications": [
@@ -45,35 +63,57 @@
       "userId": 3,
       "date": "11/3/2023, 1:16:39 PM",
       "type": 1,
-      "id": 13
+      "id": 1
     },
     {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 2:56:55 PM",
-      "type": 1,
-      "id": 14
+      "description": "You got a friend request.",
+      "userId": 2,
+      "date": "11/15/2023, 7:38:42 PM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userThatSentFriendRequest": 1,
+      "id": 2
     },
     {
-      "description": "You have successfully changed your profile.",
+      "description": "You got a friend request.",
       "userId": 1,
-      "date": "11/4/2023, 2:56:58 PM",
-      "type": 1,
-      "id": 15
+      "date": "11/16/2023, 12:01:26 AM",
+      "type": 3,
+      "firstName": "Mihaela",
+      "lastName": "Toader",
+      "userThatSentFriendRequest": 2,
+      "id": 3
     },
     {
-      "description": "You have successfully changed your profile.",
+      "description": "You got a friend request.",
       "userId": 1,
-      "date": "11/4/2023, 2:58:17 PM",
-      "type": 1,
-      "id": 16
+      "date": "11/16/2023, 12:41:46 AM",
+      "type": 3,
+      "firstName": "Alexia",
+      "lastName": "Toader",
+      "userThatSentFriendRequest": 3,
+      "id": 4
     },
     {
-      "description": "You have successfully changed your profile.",
-      "userId": 1,
-      "date": "11/4/2023, 2:58:48 PM",
-      "type": 1,
-      "id": 17
+      "description": "You got a friend request.",
+      "userId": 3,
+      "date": "11/17/2023, 2:04:43 PM",
+      "type": 3,
+      "firstName": "ale",
+      "lastName": "nico",
+      "userThatSentFriendRequest": 4,
+      "id": 5
+    },
+    {
+      "description": "You got a friend request.",
+      "userId": 4,
+      "date": "11/17/2023, 4:30:13 PM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userThatSentFriendRequest": 1,
+      "id": 6
     }
   ]
 }

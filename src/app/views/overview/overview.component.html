@@ -101,68 +101,91 @@
 
         <!-- Form -->
         <div class="modal-py">
-          <form class="row gy-6">
+          <form
+            class="row gy-6"
+            (ngSubmit)="getUserByEmail()"
+            [formGroup]="friendRequest"
+          >
             <div class="col-12">
               <label for="invite-email" class="form-label text-muted"
-                >E-mail</label
+                >Search a friend via E-mail</label
               >
               <input
                 type="email"
                 class="form-control form-control-lg"
-                id="invite-email"
+                id="inviteViaEmail"
                 placeholder="name@example.com"
+                formControlName="inviteViaEmail"
               />
-            </div>
-
-            <div class="col-12">
-              <label for="invite-message" class="form-label text-muted"
-                >Message</label
-              >
-              <textarea
-                class="form-control form-control-lg"
-                id="invite-message"
-                rows="3"
-                placeholder="Custom message"
-              ></textarea>
             </div>
           </form>
         </div>
         <!-- Form -->
 
-        <hr class="hr-bold modal-gx-n my-0" />
-
-        <!-- Button -->
-        <div class="modal-py">
-          <a
-            href="#"
-            class="btn btn-lg btn-primary w-100 d-flex align-items-center"
-            data-bs-toggle="modal"
-            data-bs-target="#invite-modal"
-          >
-            Send
-
-            <span class="icon ms-auto">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-chevron-right"
-              >
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </span>
-          </a>
+        <div *ngIf="isSameUser">
+          <p>You have to search other email than yours.</p>
         </div>
-        <!-- Button -->
+
+        <ng-container *ngIf="!isSameUser">
+          <div class="card border-0 mt-4" *ngIf="friend">
+            <div class="card-body" *ngFor="let profile of friend">
+              <div class="row align-items-center gx-5">
+                <div class="col-auto">
+                  <a class="avatar">
+                    <img class="avatar-img" src="assets/img/avatars/6.jpg" />
+                  </a>
+                </div>
+
+                <div class="col">
+                  <h5>
+                    <a>{{ profile.firstName + " " + profile.lastName }}</a>
+                  </h5>
+                </div>
+
+                <div class="col-auto">
+                  <!-- Dropdown -->
+                  <button class="btn">
+                    <a class="dropdown-item text-danger" (click)="addFriend()"
+                      >Add friend</a
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </div>
-      <!-- Modal: Body -->
+
+      <!-- Button -->
+      <div class="modal-py d-flex justify-content-center">
+        <button
+          class="btn btn-lg btn-primary w-75 d-flex align-items-center"
+          (click)="getUserByEmail()"
+          [disabled]="friendRequest.invalid"
+        >
+          Search
+
+          <span class="icon ms-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-chevron-right"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <!-- Button -->
     </div>
+    <!-- Modal: Body -->
   </div>
 </div>
 

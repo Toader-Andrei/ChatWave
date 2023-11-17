@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, last } from 'rxjs';
 import { Notification } from '../models/notification.interface';
 import { NotificationType } from '../models/notification-type.enum';
 
@@ -14,6 +14,26 @@ export class NotificationsService {
 
   getNotifications(userId: number): Observable<Notification[]> {
     return this.http.get<Notification[]>(this.apiUrl + '?userId=' + userId);
+  }
+
+  createFriendRequest(
+    description: string,
+    userId: number,
+    date: string,
+    type: NotificationType,
+    firstName: string,
+    lastName: string,
+    userThatSentFriendRequest: number
+  ): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl, {
+      description: description,
+      userId: userId,
+      date: date,
+      type: type,
+      firstName: firstName,
+      lastName: lastName,
+      userThatSentFriendRequest: userThatSentFriendRequest,
+    });
   }
 
   createNotification(

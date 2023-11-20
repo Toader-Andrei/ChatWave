@@ -8,10 +8,11 @@
       "id": 1,
       "bio": "e",
       "blockedIds": [
-        2
+        2,
+        3
       ],
       "friendIds": [
-        4,
+        2,
         3
       ],
       "friendRequestIds": []
@@ -24,7 +25,9 @@
       "id": 2,
       "bio": "bai",
       "blockedIds": [],
-      "friendIds": [],
+      "friendIds": [
+        1
+      ],
       "friendRequestIds": []
     },
     {
@@ -34,13 +37,8 @@
       "password": "parolamea123",
       "id": 3,
       "bio": "bea",
-      "blockedIds": [
-        5,
-        1
-      ],
-      "friendIds": [
-        5
-      ],
+      "blockedIds": [],
+      "friendIds": [],
       "friendRequestIds": []
     },
     {
@@ -52,7 +50,7 @@
       "bio": "bea",
       "blockedIds": [],
       "friendIds": [
-        6
+        4
       ],
       "friendRequestIds": []
     }
@@ -64,16 +62,6 @@
       "date": "11/3/2023, 1:16:39 PM",
       "type": 1,
       "id": 1
-    },
-    {
-      "description": "You got a friend request.",
-      "userId": 2,
-      "date": "11/15/2023, 7:38:42 PM",
-      "type": 3,
-      "firstName": "Andrei Stefan",
-      "lastName": "Toader",
-      "userThatSentFriendRequest": 1,
-      "id": 2
     },
     {
       "description": "You got a friend request.",
@@ -114,6 +102,36 @@
       "lastName": "Toader",
       "userThatSentFriendRequest": 1,
       "id": 6
+    },
+    {
+      "description": "You got a friend request.",
+      "userId": 2,
+      "date": "11/20/2023, 9:06:56 PM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userThatSentFriendRequest": 1,
+      "id": 7
+    },
+    {
+      "description": "You got a friend request.",
+      "userId": 3,
+      "date": "11/20/2023, 11:32:35 PM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userThatSentFriendRequest": 1,
+      "id": 8
+    },
+    {
+      "description": "You got a friend request.",
+      "userId": 3,
+      "date": "11/21/2023, 12:23:59 AM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userThatSentFriendRequest": 1,
+      "id": 9
     }
   ]
 }

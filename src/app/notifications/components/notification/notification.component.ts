@@ -34,7 +34,10 @@ export class NotificationComponent {
 
   confirmFriendRequest() {
     if (this.loggedUser) {
-      this.loggedUser.blockedIds.push(this.data.id);
+      this.loggedUser.blockedIds.push(
+        this.data.userThatSentFriendRequest as number
+      );
+      console.log(this.data.userThatSentFriendRequest);
 
       this.accountsService
         .addFriendId(this.loggedUser.id, this.loggedUser.blockedIds)

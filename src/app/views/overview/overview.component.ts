@@ -68,6 +68,9 @@ export class OverviewComponent {
     this.accountsService
       .getAccount(this.friendRequest.value.inviteViaEmail)
       .subscribe((res) => {
+        console.log(res[0].id);
+        console.log(user.id);
+
         this.notificationsService
           .createFriendRequest(
             description,

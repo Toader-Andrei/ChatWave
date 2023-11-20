@@ -29,7 +29,7 @@ export class AccountsService {
     return this.http.get<Profile[]>(this.userUrl);
   }
 
-  searchProfile(value: string): Observable<Profile[]> {
+  searchProfile(value: number): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.userUrl + '?q=' + value);
   }
 
@@ -72,6 +72,10 @@ export class AccountsService {
     return this.http.patch<Profile>(this.userUrl + '/' + id, {
       blockedIds: blockedUserIds,
     });
+  }
+
+  getFriendId(id: number): Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.userUrl + '/' + id);
   }
 
   addFriendId(id: number, friendIds: number[]): Observable<Profile> {

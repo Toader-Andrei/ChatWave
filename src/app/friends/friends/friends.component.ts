@@ -19,11 +19,15 @@ export class FriendsComponent {
   searchUsers!: FormGroup;
 
   ngOnInit() {
+    const user = this.accountsService.user;
+
     this.searchUsers = this.fb.group({
       searchedName: new FormControl(''),
     });
 
-    this.searchFriends('');
+    user.friendIds.forEach((res) => {
+      this.searchFriends(res);
+    });
   }
 
   onSubmit() {
@@ -31,7 +35,7 @@ export class FriendsComponent {
     this.searchFriends(nameValue.searchedName);
   }
 
-  searchFriends(searchValue: string) {
+  searchFriends(searchValue: number) {
     const user = this.accountsService.user;
 
     if (user) {

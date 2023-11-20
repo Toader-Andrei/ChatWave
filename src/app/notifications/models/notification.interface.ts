@@ -8,4 +8,5 @@ export interface Notification {
   id: number;
   firstName?: string;
   lastName?: string;
+  userThatSentFriendRequest?: number;
 }

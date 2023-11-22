@@ -2,11 +2,11 @@ import { NotificationType } from './notification-type.enum';
 
 export interface Notification {
   description: string;
-  userId: number;
+  receiverId: number;
   date: string;
   type: NotificationType;
   id: number;
   firstName?: string;
   lastName?: string;
-  userThatSentFriendRequest?: number;
+  senderId?: number;
 }

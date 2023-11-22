@@ -9,6 +9,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-overview',
@@ -16,10 +17,12 @@ import {
   styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent {
-  userData!: Profile[];
-  friend!: Profile[];
+  loggedUser!: Profile;
+  friend!: Profile | null;
 
   isSameUser!: boolean;
+  emailNotFoundValidation!: boolean;
+  sendedFriendRequest!: boolean;
 
   friendRequest!: FormGroup;
 
@@ -37,24 +40,29 @@ export class OverviewComponent {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
     });
-  }
-
-  addData(user: Profile[]): void {
-    this.userData = user;
+    this.loggedUser = this.accountsService.user;
   }
 
   getUserByEmail() {
     const user = this.accountsService.user;
 
     this.accountsService
-      .getAccount(this.friendRequest.value.inviteViaEmail)
+      .getAccountByEmail(this.friendRequest.value.inviteViaEmail)
+      .pipe(map((response) => response[0]))
       .subscribe((response) => {
-        if (response[0].email === user.email) {
-          this.isSameUser = true;
-          this.friend = [];
+        if (response) {
+          if (response.email === user.email) {
+            this.isSameUser = true;
+            this.friend = null;
+            this.emailNotFoundValidation = false;
+          } else if (response) {
+            this.isSameUser = false;
+            this.friend = response;
+            this.emailNotFoundValidation = false;
+          }
+          this.sendedFriendRequest = false;
         } else {
-          this.isSameUser = false;
-          this.friend = response;
+          this.emailNotFoundValidation = true;
         }
       });
   }
@@ -66,11 +74,12 @@ export class OverviewComponent {
     const date = new Date().toLocaleString();
 
     this.accountsService
-      .getAccount(this.friendRequest.value.inviteViaEmail)
+      .getAccountByEmail(this.friendRequest.value.inviteViaEmail)
       .subscribe((res) => {
-        console.log(res[0].id);
-        console.log(user.id);
-
+        res[0].friendRequestIds.push(user.id);
+        this.accountsService
+          .sendFriendRequest(res[0].id, res[0].friendRequestIds)
+          .subscribe();
         this.notificationsService
           .createFriendRequest(
             description,
@@ -82,7 +91,9 @@ export class OverviewComponent {
             user.id
           )
           .subscribe(() => {
-            this.friend = [];
+            if (res[0].friendRequestIds.includes(this.loggedUser.id)) {
+              this.sendedFriendRequest = true;
+            }
           });
       });
   }

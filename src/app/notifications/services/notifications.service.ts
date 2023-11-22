@@ -12,27 +12,27 @@ export class NotificationsService {
 
   constructor(private http: HttpClient) {}
 
-  getNotifications(userId: number): Observable<Notification[]> {
-    return this.http.get<Notification[]>(this.apiUrl + '?userId=' + userId);
+  getNotifications(receiverId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>(this.apiUrl + '?userId=' + receiverId);
   }
 
   createFriendRequest(
     description: string,
-    userId: number,
+    senderId: number,
     date: string,
     type: NotificationType,
     firstName: string,
     lastName: string,
-    userThatSentFriendRequest: number
+    userId: number
   ): Observable<Notification> {
     return this.http.post<Notification>(this.apiUrl, {
       description: description,
-      userId: userId,
+      senderId: userId,
       date: date,
       type: type,
       firstName: firstName,
       lastName: lastName,
-      userThatSentFriendRequest: userThatSentFriendRequest,
+      userId: senderId,
     });
   }
 

@@ -25,11 +25,7 @@ export class AccountsService {
     this.isLogged = true;
   }
 
-  getProfiles(): Observable<Profile[]> {
-    return this.http.get<Profile[]>(this.userUrl);
-  }
-
-  searchProfile(value: number): Observable<Profile[]> {
+  searchAccount(value: number): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.userUrl + '?q=' + value);
   }
 
@@ -37,12 +33,12 @@ export class AccountsService {
     return this.http.post<Profile[]>(this.userUrl, user);
   }
 
-  getAccount(email: string): Observable<Profile[]> {
+  getAccountByEmail(email: string): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.userUrl + '?email=' + email);
   }
 
-  getAccounts(user: number): Observable<Profile[]> {
-    return this.http.get<Profile[]>(this.userUrl + '/' + user);
+  getAccount(userId: number): Observable<Profile> {
+    return this.http.get<Profile>(this.userUrl + '/' + userId);
   }
 
   changeName(
@@ -64,23 +60,35 @@ export class AccountsService {
     });
   }
 
-  getBlockedUsersFromLoggedUser(id: number): Observable<Profile> {
-    return this.http.get<Profile>(this.userUrl + '/' + id);
-  }
-
   addBlockedUser(id: number, blockedUserIds: number[]): Observable<Profile> {
     return this.http.patch<Profile>(this.userUrl + '/' + id, {
       blockedIds: blockedUserIds,
     });
   }
 
-  getFriendId(id: number): Observable<Profile[]> {
-    return this.http.get<Profile[]>(this.userUrl + '/' + id);
+  sendFriendRequest(
+    receiverId: number,
+    friendRequestIds: number[]
+  ): Observable<Profile> {
+    return this.http.patch<Profile>(this.userUrl + '/' + receiverId, {
+      friendRequestIds,
+    });
   }
 
-  addFriendId(id: number, friendIds: number[]): Observable<Profile> {
+  addFriendId(
+    id: number,
+    friendIds: number[],
+    friendRequestIds: number[]
+  ): Observable<Profile> {
     return this.http.patch<Profile>(this.userUrl + '/' + id, {
-      friendIds: friendIds,
+      friendIds,
+      friendRequestIds,
+    });
+  }
+
+  addFriendIdConfirm(id: number, friendIds: number[]): Observable<Profile> {
+    return this.http.patch<Profile>(this.userUrl + '/' + id, {
+      friendIds,
     });
   }
 }

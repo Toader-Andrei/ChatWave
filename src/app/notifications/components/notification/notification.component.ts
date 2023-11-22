@@ -34,16 +34,35 @@ export class NotificationComponent {
 
   confirmFriendRequest() {
     if (this.loggedUser) {
-      this.loggedUser.blockedIds.push(
-        this.data.userThatSentFriendRequest as number
+      this.loggedUser.friendIds.push(this.data.senderId as number);
+
+      const updateRequestIds = this.loggedUser.friendRequestIds.filter(
+        (requestId) => {
+          return requestId !== this.data.senderId;
+        }
       );
-      console.log(this.data.userThatSentFriendRequest);
 
       this.accountsService
-        .addFriendId(this.loggedUser.id, this.loggedUser.blockedIds)
-        .subscribe((res) => {
-          res.friendIds.filter((response) => {});
-          // this.notificationsService.getNotifications()
+        .addFriendId(
+          this.loggedUser.id,
+          this.loggedUser.friendIds,
+          updateRequestIds
+        )
+        .subscribe(() => {
+          this.accountsService
+            .getAccount(this.data.senderId as number)
+            .subscribe((res) => {
+              res.friendIds.push(this.loggedUser.id);
+              this.accountsService
+                .addFriendIdConfirm(this.data.senderId as number, res.friendIds)
+                .subscribe();
+            });
+
+          this.notificationsService
+            .deleteNotification(this.data.id)
+            .subscribe(() => {
+              this.onDelete.emit(this.data.id as number);
+            });
         });
     }
   }

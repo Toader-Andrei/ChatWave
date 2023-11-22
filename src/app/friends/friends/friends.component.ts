@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Profile } from 'src/app/models/interfaces/profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-friends',
@@ -21,12 +22,19 @@ export class FriendsComponent {
   ngOnInit() {
     const user = this.accountsService.user;
 
+    const httpStack: Observable<Profile>[] = [];
+
     this.searchUsers = this.fb.group({
       searchedName: new FormControl(''),
     });
 
-    user.friendIds.forEach((res) => {
-      this.searchFriends(res);
+    user.friendIds.forEach((friendId) => {
+      const httpRequest = this.accountsService.getAccount(friendId);
+      httpStack.push(httpRequest);
+    });
+
+    combineLatest(httpStack).subscribe((res) => {
+      this.users = res;
     });
   }
 
@@ -39,9 +47,11 @@ export class FriendsComponent {
     const user = this.accountsService.user;
 
     if (user) {
-      this.accountsService.searchProfile(searchValue).subscribe((res) => {
+      this.accountsService.searchAccount(searchValue).subscribe((res) => {
         this.users = res.filter((actualUser) => {
-          return actualUser.id !== user.id;
+          return (
+            actualUser.id !== user.id && user.friendIds.includes(actualUser.id)
+          );
         });
       });
     }

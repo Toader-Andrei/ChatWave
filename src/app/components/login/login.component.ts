@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.accountsService
-      .getAccount(this.myForm.value.email)
+      .getAccountByEmail(this.myForm.value.email)
       .subscribe((response) => {
         if (response.length) {
           if (

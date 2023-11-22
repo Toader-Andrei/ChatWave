@@ -126,9 +126,13 @@
           <p>You have to search other email than yours.</p>
         </div>
 
+        <div *ngIf="emailNotFoundValidation">
+          <p>You have to search a real email.</p>
+        </div>
+
         <ng-container *ngIf="!isSameUser">
           <div class="card border-0 mt-4" *ngIf="friend">
-            <div class="card-body" *ngFor="let profile of friend">
+            <div class="card-body">
               <div class="row align-items-center gx-5">
                 <div class="col-auto">
                   <a class="avatar">
@@ -138,16 +142,40 @@
 
                 <div class="col">
                   <h5>
-                    <a>{{ profile.firstName + " " + profile.lastName }}</a>
+                    <a>{{ friend.firstName + " " + friend.lastName }}</a>
                   </h5>
                 </div>
 
-                <div class="col-auto">
+                <div
+                  class="col-auto"
+                  *ngIf="
+                    !this.friend.friendRequestIds.includes(
+                      this.loggedUser.id
+                    ) &&
+                    !this.friend.friendIds.includes(this.loggedUser.id) &&
+                    !sendedFriendRequest
+                  "
+                >
                   <!-- Dropdown -->
                   <button class="btn">
                     <a class="dropdown-item text-danger" (click)="addFriend()"
                       >Add friend</a
                     >
+                  </button>
+                </div>
+                <div
+                  class="col-auto"
+                  *ngIf="
+                    this.friend.friendRequestIds.includes(this.loggedUser.id) ||
+                    this.friend.friendIds.includes(this.loggedUser.id) ||
+                    sendedFriendRequest
+                  "
+                >
+                  <!-- Dropdown -->
+                  <button class="btn">
+                    <a class="dropdown-item text-info fs-3"
+                      ><i class="fa-solid fa-circle-check"></i
+                    ></a>
                   </button>
                 </div>
               </div>

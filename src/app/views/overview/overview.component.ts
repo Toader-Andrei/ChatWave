@@ -43,8 +43,10 @@ export class OverviewComponent {
     this.loggedUser = this.accountsService.user;
   }
 
-  getUserByEmail() {
+  searchFriend() {
     const user = this.accountsService.user;
+
+    this.friend = null;
 
     this.accountsService
       .getAccountByEmail(this.friendRequest.value.inviteViaEmail)
@@ -53,9 +55,8 @@ export class OverviewComponent {
         if (response) {
           if (response.email === user.email) {
             this.isSameUser = true;
-            this.friend = null;
             this.emailNotFoundValidation = false;
-          } else if (response) {
+          } else {
             this.isSameUser = false;
             this.friend = response;
             this.emailNotFoundValidation = false;

@@ -36,6 +36,8 @@ export class FriendsComponent {
     combineLatest(httpStack).subscribe((res) => {
       this.users = res;
     });
+
+    console.log(user);
   }
 
   onSubmit() {

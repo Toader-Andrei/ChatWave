@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, last } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Notification } from '../models/notification.interface';
 import { NotificationType } from '../models/notification-type.enum';
 

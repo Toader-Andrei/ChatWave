@@ -9,8 +9,6 @@
       "bio": "",
       "blockedIds": [],
       "friendIds": [
-        3,
-        2,
         4
       ],
       "friendRequestIds": []
@@ -22,16 +20,10 @@
       "password": "parolamea",
       "id": 2,
       "bio": "bai",
-      "blockedIds": [
-        1
-      ],
-      "friendIds": [
-        3,
-        1,
-        4
-      ],
+      "blockedIds": [],
+      "friendIds": [],
       "friendRequestIds": [
-        3
+        4
       ]
     },
     {
@@ -42,11 +34,10 @@
       "id": 3,
       "bio": "bea",
       "blockedIds": [],
-      "friendIds": [
-        1,
-        2
-      ],
-      "friendRequestIds": []
+      "friendIds": [],
+      "friendRequestIds": [
+        4
+      ]
     },
     {
       "firstName": "ale",
@@ -57,11 +48,31 @@
       "bio": "bea",
       "blockedIds": [],
       "friendIds": [
-        2,
         1
       ],
       "friendRequestIds": []
     }
   ],
-  "notifications": []
+  "notifications": [
+    {
+      "description": "You got a friend request.",
+      "senderId": 4,
+      "date": "11/23/2023, 2:52:56 PM",
+      "type": 3,
+      "firstName": "ale",
+      "lastName": "nico",
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "description": "You got a friend request.",
+      "senderId": 4,
+      "date": "11/23/2023, 2:53:01 PM",
+      "type": 3,
+      "firstName": "ale",
+      "lastName": "nico",
+      "userId": 3,
+      "id": 3
+    }
+  ]
 }

@@ -118,100 +118,107 @@
                 formControlName="inviteViaEmail"
               />
             </div>
+            <div *ngIf="isSameUser" class="text-center text-danger">
+              <p>You have to search other email than yours.</p>
+            </div>
+
+            <div
+              *ngIf="emailNotFoundValidation"
+              class="text-center text-danger"
+            >
+              <p>You have to search a real email.</p>
+            </div>
+
+            <ng-container *ngIf="!isSameUser">
+              <div class="card border-0 mt-4" *ngIf="friend">
+                <div class="card-body">
+                  <div class="row align-items-center gx-5">
+                    <div class="col-auto">
+                      <a class="avatar">
+                        <img
+                          class="avatar-img"
+                          src="assets/img/avatars/6.jpg"
+                        />
+                      </a>
+                    </div>
+
+                    <div class="col">
+                      <h5>
+                        <a>{{ friend.firstName + " " + friend.lastName }}</a>
+                      </h5>
+                    </div>
+
+                    <div
+                      class="col-auto"
+                      *ngIf="
+                        !this.friend.friendRequestIds.includes(
+                          this.loggedUser.id
+                        ) &&
+                        !this.friend.friendIds.includes(this.loggedUser.id) &&
+                        !sendedFriendRequest
+                      "
+                    >
+                      <!-- Dropdown -->
+                      <button class="btn">
+                        <a
+                          class="dropdown-item text-danger"
+                          (click)="addFriend()"
+                          >Add friend</a
+                        >
+                      </button>
+                    </div>
+                    <div
+                      class="col-auto"
+                      *ngIf="
+                        this.friend.friendRequestIds.includes(
+                          this.loggedUser.id
+                        ) ||
+                        this.friend.friendIds.includes(this.loggedUser.id) ||
+                        sendedFriendRequest
+                      "
+                    >
+                      <!-- Dropdown -->
+                      <button class="btn">
+                        <a class="dropdown-item text-info fs-3"
+                          ><i class="fa-solid fa-circle-check"></i
+                        ></a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <div class="modal-py d-flex justify-content-center p-0">
+              <button
+                class="btn btn-lg btn-primary w-100 m-7 d-flex align-items-center"
+                (click)="searchFriend()"
+                [disabled]="friendRequest.invalid"
+              >
+                Search
+
+                <span class="icon ms-auto">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-chevron-right"
+                  >
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </span>
+              </button>
+            </div>
           </form>
         </div>
         <!-- Form -->
-
-        <div *ngIf="isSameUser">
-          <p>You have to search other email than yours.</p>
-        </div>
-
-        <div *ngIf="emailNotFoundValidation">
-          <p>You have to search a real email.</p>
-        </div>
-
-        <ng-container *ngIf="!isSameUser">
-          <div class="card border-0 mt-4" *ngIf="friend">
-            <div class="card-body">
-              <div class="row align-items-center gx-5">
-                <div class="col-auto">
-                  <a class="avatar">
-                    <img class="avatar-img" src="assets/img/avatars/6.jpg" />
-                  </a>
-                </div>
-
-                <div class="col">
-                  <h5>
-                    <a>{{ friend.firstName + " " + friend.lastName }}</a>
-                  </h5>
-                </div>
-
-                <div
-                  class="col-auto"
-                  *ngIf="
-                    !this.friend.friendRequestIds.includes(
-                      this.loggedUser.id
-                    ) &&
-                    !this.friend.friendIds.includes(this.loggedUser.id) &&
-                    !sendedFriendRequest
-                  "
-                >
-                  <!-- Dropdown -->
-                  <button class="btn">
-                    <a class="dropdown-item text-danger" (click)="addFriend()"
-                      >Add friend</a
-                    >
-                  </button>
-                </div>
-                <div
-                  class="col-auto"
-                  *ngIf="
-                    this.friend.friendRequestIds.includes(this.loggedUser.id) ||
-                    this.friend.friendIds.includes(this.loggedUser.id) ||
-                    sendedFriendRequest
-                  "
-                >
-                  <!-- Dropdown -->
-                  <button class="btn">
-                    <a class="dropdown-item text-info fs-3"
-                      ><i class="fa-solid fa-circle-check"></i
-                    ></a>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-container>
       </div>
-
-      <!-- Button -->
-      <div class="modal-py d-flex justify-content-center p-0">
-        <button
-          class="btn btn-lg btn-primary w-100 m-7 d-flex align-items-center"
-          (click)="searchFriend()"
-          [disabled]="friendRequest.invalid"
-        >
-          Search
-
-          <span class="icon ms-auto">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-chevron-right"
-            >
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </span>
-        </button>
-      </div>
-      <!-- Button -->
     </div>
     <!-- Modal: Body -->
   </div>
@@ -490,7 +497,6 @@
           <div class="dropdown">
             <a
               class="icon text-muted"
-              href="#"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -515,7 +521,7 @@
 
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center">
                   Download
                   <div class="icon ms-auto">
                     <svg
@@ -540,7 +546,7 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center">
                   Share
                   <div class="icon ms-auto">
                     <svg
@@ -609,7 +615,7 @@
       <!-- Modal: Footer -->
       <div class="modal-footer">
         <div class="w-100 text-center">
-          <h6><a href="#">Marshall Wallaker</a></h6>
+          <h6><a>Marshall Wallaker</a></h6>
           <p class="small">Today at 14:43</p>
         </div>
       </div>

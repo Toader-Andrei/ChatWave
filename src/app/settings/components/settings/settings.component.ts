@@ -37,12 +37,18 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     const user = this.accountsService.user;
-
     if (user) {
-      this.firstName = user.firstName;
-      this.lastName = user.lastName;
-      this.userEmail = user.email;
-      this.userPassword = user.password;
+      this.accountsService.getAccount(user.id).subscribe((res) => {
+        this.firstName = res.firstName;
+        this.lastName = res.lastName;
+        this.userEmail = res.email;
+        this.userPassword = res.password;
+
+        this.profileForm.patchValue({
+          firstName: this.firstName,
+          lastName: this.lastName,
+        });
+      });
     }
 
     this.profileForm = this.profile.group({
@@ -119,6 +125,9 @@ export class SettingsComponent implements OnInit {
         .changePassword(user.id as number, form.value.newPassword)
         .subscribe((response) => {
           response.password = form.value.newPassword;
+
+          console.log(response);
+
           form.reset();
           this.toastr.success('You have successfully changed your password.');
 

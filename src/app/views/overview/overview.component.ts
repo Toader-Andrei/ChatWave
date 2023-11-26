@@ -55,15 +55,15 @@ export class OverviewComponent {
         if (response) {
           if (response.email === user.email) {
             this.isSameUser = true;
-            this.emailNotFoundValidation = false;
           } else {
             this.isSameUser = false;
             this.friend = response;
-            this.emailNotFoundValidation = false;
           }
+          this.emailNotFoundValidation = false;
           this.sendedFriendRequest = false;
         } else {
           this.emailNotFoundValidation = true;
+          this.isSameUser = false;
         }
       });
   }

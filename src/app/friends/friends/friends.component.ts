@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Profile } from 'src/app/models/interfaces/profile.interface';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, Subscription, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-friends',
@@ -11,6 +11,7 @@ import { Observable, combineLatest } from 'rxjs';
 })
 export class FriendsComponent {
   users: Profile[] = [];
+  subscription = new Subscription();
 
   constructor(
     private accountsService: AccountsService,
@@ -22,22 +23,26 @@ export class FriendsComponent {
   ngOnInit() {
     const user = this.accountsService.user;
 
+    // this.subscription = this.accountsService.testSubject$.subscribe((res) => {
+    //   console.log(res);
+    // });
+
+    this.accountsService.getAccount(user.id).subscribe((res) => {
+      res.friendIds.forEach((friendId) => {
+        const httpRequest = this.accountsService.getAccount(friendId);
+        httpStack.push(httpRequest);
+      });
+
+      combineLatest(httpStack).subscribe((response) => {
+        this.users = response;
+      });
+    });
+
     const httpStack: Observable<Profile>[] = [];
 
     this.searchUsers = this.fb.group({
       searchedName: new FormControl(''),
     });
-
-    user.friendIds.forEach((friendId) => {
-      const httpRequest = this.accountsService.getAccount(friendId);
-      httpStack.push(httpRequest);
-    });
-
-    combineLatest(httpStack).subscribe((res) => {
-      this.users = res;
-    });
-
-    console.log(user);
   }
 
   onSubmit() {
@@ -47,15 +52,21 @@ export class FriendsComponent {
 
   searchFriends(searchValue: number) {
     const user = this.accountsService.user;
-
     if (user) {
-      this.accountsService.searchAccount(searchValue).subscribe((res) => {
-        this.users = res.filter((actualUser) => {
-          return (
-            actualUser.id !== user.id && user.friendIds.includes(actualUser.id)
-          );
+      this.accountsService.getAccount(user.id).subscribe((response) => {
+        this.accountsService.searchAccount(searchValue).subscribe((res) => {
+          this.users = res.filter((actualUser) => {
+            return (
+              actualUser.id !== user.id &&
+              response.friendIds.includes(actualUser.id)
+            );
+          });
         });
       });
     }
   }
+
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 }

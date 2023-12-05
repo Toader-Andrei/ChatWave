@@ -76,6 +76,12 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  // testSubjectClick() {
+  //   this.accountsService.updateSubject(true);
+  //   console.log(this.accountsService.testSubject$.getValue());
+  //   // asa am acces la datele statice un plus pentru behaviorSubject
+  // }
+
   onChangeProfile(form: FormGroup) {
     const user = this.accountsService.user;
 

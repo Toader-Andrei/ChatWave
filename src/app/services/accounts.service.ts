@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Profile } from '../models/interfaces/profile.interface';
 
 @Injectable({
@@ -10,6 +10,12 @@ import { Profile } from '../models/interfaces/profile.interface';
 export class AccountsService {
   private userUrl = 'http://localhost:3000/users';
   private isLogged = false;
+
+  // testSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  // updateSubject(data: boolean): void {
+  //   this.testSubject$.next(data);
+  // }
 
   user!: Profile;
 

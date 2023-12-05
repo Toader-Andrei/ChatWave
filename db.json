@@ -4,26 +4,24 @@
       "firstName": "Andrei Stefan",
       "lastName": "Toader",
       "email": "toaderandrei58@gmail.com",
-      "password": "mypassword",
+      "password": "parolamea",
       "id": 1,
       "bio": "",
       "blockedIds": [],
-      "friendIds": [
-        4
-      ],
+      "friendIds": [],
       "friendRequestIds": []
     },
     {
-      "firstName": "Mihaela",
+      "firstName": "Mihaelaeee",
       "lastName": "Toader",
       "email": "t.mihaela66@yahoo.com",
       "password": "parolamea",
       "id": 2,
-      "bio": "bai",
+      "bio": "",
       "blockedIds": [],
       "friendIds": [],
       "friendRequestIds": [
-        4
+        1
       ]
     },
     {
@@ -35,9 +33,7 @@
       "bio": "bea",
       "blockedIds": [],
       "friendIds": [],
-      "friendRequestIds": [
-        4
-      ]
+      "friendRequestIds": []
     },
     {
       "firstName": "ale",
@@ -47,23 +43,13 @@
       "id": 4,
       "bio": "bea",
       "blockedIds": [],
-      "friendIds": [
+      "friendIds": [],
+      "friendRequestIds": [
         1
-      ],
-      "friendRequestIds": []
+      ]
     }
   ],
   "notifications": [
-    {
-      "description": "You got a friend request.",
-      "senderId": 4,
-      "date": "11/23/2023, 2:52:56 PM",
-      "type": 3,
-      "firstName": "ale",
-      "lastName": "nico",
-      "userId": 2,
-      "id": 2
-    },
     {
       "description": "You got a friend request.",
       "senderId": 4,
@@ -94,6 +80,30 @@
       "date": "11/26/2023, 11:55:34 PM",
       "type": 1,
       "id": 6
+    },
+    {
+      "description": "You have successfully changed your password.",
+      "userId": 1,
+      "date": "12/5/2023, 6:33:29 PM",
+      "type": 2,
+      "id": 7
+    },
+    {
+      "description": "You have successfully changed your profile.",
+      "userId": 2,
+      "date": "12/5/2023, 6:42:40 PM",
+      "type": 1,
+      "id": 8
+    },
+    {
+      "description": "You got a friend request.",
+      "senderId": 1,
+      "date": "12/6/2023, 1:06:10 AM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userId": 4,
+      "id": 9
     }
   ]
 }

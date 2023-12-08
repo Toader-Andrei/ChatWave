@@ -118,19 +118,19 @@
                 formControlName="inviteViaEmail"
               />
             </div>
-            <div *ngIf="isSameUser" class="text-center text-danger">
+            <div *ngIf="isSameUser" class="text-center text-danger my-2 mt-5">
               <p>You have to search other email than yours.</p>
             </div>
 
             <div
               *ngIf="emailNotFoundValidation"
-              class="text-center text-danger"
+              class="text-center text-danger my-2 mt-5"
             >
               <p>You have to search a real email.</p>
             </div>
 
             <ng-container *ngIf="!isSameUser">
-              <div class="card border-0 mt-4" *ngIf="friend">
+              <div class="card border-0 noMarginTop" *ngIf="friend">
                 <div class="card-body">
                   <div class="row align-items-center gx-5">
                     <div class="col-auto">
@@ -189,7 +189,10 @@
               </div>
             </ng-container>
 
-            <div class="modal-py d-flex justify-content-center m-0 py-0">
+            <div
+              class="modal-py d-flex justify-content-center m-0 py-0"
+              [ngClass]="{ 'mt-5': !friend }"
+            >
               <button
                 class="btn btn-lg btn-primary w-100 d-flex align-items-center"
                 (click)="searchFriend()"

@@ -56,7 +56,36 @@ export class NotificationComponent {
               this.accountsService
                 .addFriendIdConfirm(this.data.senderId as number, res.friendIds)
                 .subscribe();
+              const description =
+                res.firstName + ' ' + res.lastName + ' is now your friend!';
+
+              this.notificationsService
+                .addConfirmFriendNotificationForSenderId(
+                  description,
+                  this.loggedUser.id,
+                  date,
+                  NotificationType.ProfileChange
+                )
+                .subscribe();
             });
+
+          const description =
+            this.loggedUser.firstName +
+            ' ' +
+            this.loggedUser.lastName +
+            'is now your friend!';
+
+          const date = new Date().toLocaleString();
+
+          this.notificationsService
+            .addConfirmFriendNotification(
+              description,
+              this.data.senderId as number,
+              this.loggedUser.id,
+              date,
+              NotificationType.ProfileChange
+            )
+            .subscribe();
 
           this.notificationsService
             .deleteNotification(this.data.id)

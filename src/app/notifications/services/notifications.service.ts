@@ -50,6 +50,36 @@ export class NotificationsService {
     });
   }
 
+  addConfirmFriendNotification(
+    description: string,
+    receiverId: number,
+    senderId: number,
+    date: string,
+    type: NotificationType
+  ): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl, {
+      description,
+      userId: receiverId,
+      senderId,
+      date,
+      type,
+    });
+  }
+
+  addConfirmFriendNotificationForSenderId(
+    description: string,
+    senderId: number,
+    date: string,
+    type: NotificationType
+  ): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl, {
+      description,
+      userId: senderId,
+      date,
+      type,
+    });
+  }
+
   deleteNotification(notificationId: number): Observable<void> {
     return this.http.delete<void>(this.apiUrl + '/' + notificationId);
   }

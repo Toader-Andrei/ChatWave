@@ -46,25 +46,31 @@ export class OverviewComponent {
   searchFriend() {
     const user = this.accountsService.user;
 
-    this.friend = null;
-
     this.accountsService
       .getAccountByEmail(this.friendRequest.value.inviteViaEmail)
       .pipe(map((response) => response[0]))
       .subscribe((response) => {
-        if (response) {
-          if (response.email === user.email) {
-            this.isSameUser = true;
-          } else {
-            this.isSameUser = false;
-            this.friend = response;
-          }
-          this.emailNotFoundValidation = false;
-          this.sendedFriendRequest = false;
-        } else {
-          this.emailNotFoundValidation = true;
-          this.isSameUser = false;
-        }
+        this.friendRequest
+          .get('inviteViaEmail')
+          ?.valueChanges.subscribe((selectedValue) => {
+            if (response) {
+              if (selectedValue === response.email && user.email) {
+                this.isSameUser = true;
+              } else {
+                this.isSameUser = false;
+                this.friend = response;
+              }
+              this.emailNotFoundValidation = false;
+              this.sendedFriendRequest = false;
+
+              if (selectedValue === '') {
+                this.friend = null;
+              }
+            } else {
+              this.emailNotFoundValidation = true;
+              this.isSameUser = false;
+            }
+          });
       });
   }
 

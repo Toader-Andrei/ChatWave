@@ -51,15 +51,25 @@
             <li>
               <a
                 (click)="blockUser()"
-                class="dropdown-item text-danger"
+                class="dropdown-item text-danger cursor-pointer"
                 *ngIf="!loggedUser.blockedIds.includes(user.id)"
                 >Block user</a
               >
               <a
                 (click)="unBlockUser()"
-                class="dropdown-item text-danger"
+                class="dropdown-item text-danger cursor-pointer"
                 *ngIf="loggedUser.blockedIds.includes(user.id)"
                 >Unblock user</a
+              >
+            </li>
+            <div class="text-success">
+              <hr class="m-0 p-0" />
+            </div>
+            <li>
+              <a
+                (click)="unFriendUser()"
+                class="dropdown-item text-danger cursor-pointer"
+                >Unfriend</a
               >
             </li>
           </ul>

@@ -72,6 +72,12 @@ export class AccountsService {
     });
   }
 
+  removeFriend(id: number, friendIds: number[]): Observable<Profile> {
+    return this.http.patch<Profile>(this.userUrl + '/' + id, {
+      friendIds,
+    });
+  }
+
   sendFriendRequest(
     receiverId: number,
     friendRequestIds: number[]

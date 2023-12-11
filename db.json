@@ -8,9 +8,7 @@
       "id": 1,
       "bio": "",
       "blockedIds": [],
-      "friendIds": [
-        3
-      ],
+      "friendIds": [],
       "friendRequestIds": []
     },
     {
@@ -22,7 +20,9 @@
       "bio": "",
       "blockedIds": [],
       "friendIds": [],
-      "friendRequestIds": []
+      "friendRequestIds": [
+        1
+      ]
     },
     {
       "firstName": "Alexiae",
@@ -32,10 +32,10 @@
       "id": 3,
       "bio": "",
       "blockedIds": [],
-      "friendIds": [
+      "friendIds": [],
+      "friendRequestIds": [
         1
-      ],
-      "friendRequestIds": []
+      ]
     },
     {
       "firstName": "ale",
@@ -64,6 +64,61 @@
       "date": "12/8/2023, 9:13:17 PM",
       "type": 1,
       "id": 3
+    },
+    {
+      "description": "You got a friend request.",
+      "senderId": 2,
+      "date": "12/11/2023, 6:33:50 PM",
+      "type": 3,
+      "firstName": "Mihaela",
+      "lastName": "Toader",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "description": "You got a friend request.",
+      "senderId": 2,
+      "date": "12/11/2023, 6:33:55 PM",
+      "type": 3,
+      "firstName": "Mihaela",
+      "lastName": "Toader",
+      "userId": 4,
+      "id": 5
+    },
+    {
+      "description": "Mihaela Toaderis now your friend!",
+      "userId": 1,
+      "senderId": 2,
+      "date": "12/11/2023, 7:29:38 PM",
+      "type": 1,
+      "id": 7
+    },
+    {
+      "description": "Andrei Stefan Toader is now your friend!",
+      "userId": 2,
+      "date": "12/11/2023, 7:29:38 PM",
+      "type": 1,
+      "id": 8
+    },
+    {
+      "description": "You got a friend request.",
+      "senderId": 1,
+      "date": "12/11/2023, 9:12:16 PM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userId": 2,
+      "id": 9
+    },
+    {
+      "description": "You got a friend request.",
+      "senderId": 1,
+      "date": "12/11/2023, 9:14:24 PM",
+      "type": 3,
+      "firstName": "Andrei Stefan",
+      "lastName": "Toader",
+      "userId": 3,
+      "id": 10
     }
   ]
 }

@@ -30,7 +30,9 @@ export class OverviewComponent {
     private accountsService: AccountsService,
     private notificationsService: NotificationsService,
     private fb: FormBuilder
-  ) {}
+  ) {
+    this.loggedUser = this.accountsService.user;
+  }
 
   ngOnInit() {
     this.friendRequest = this.fb.group({
@@ -40,37 +42,40 @@ export class OverviewComponent {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
     });
+
     this.loggedUser = this.accountsService.user;
   }
 
   searchFriend() {
     const user = this.accountsService.user;
 
+    this.friendRequest
+      .get('inviteViaEmail')
+      ?.valueChanges.subscribe((inputValue) => {
+        if (inputValue === '') {
+          this.friend = null;
+        }
+      });
+
     this.accountsService
       .getAccountByEmail(this.friendRequest.value.inviteViaEmail)
       .pipe(map((response) => response[0]))
       .subscribe((response) => {
-        this.friendRequest
-          .get('inviteViaEmail')
-          ?.valueChanges.subscribe((selectedValue) => {
-            if (response) {
-              if (selectedValue === response.email && user.email) {
-                this.isSameUser = true;
-              } else {
-                this.isSameUser = false;
-                this.friend = response;
-              }
-              this.emailNotFoundValidation = false;
-              this.sendedFriendRequest = false;
-
-              if (selectedValue === '') {
-                this.friend = null;
-              }
-            } else {
-              this.emailNotFoundValidation = true;
-              this.isSameUser = false;
-            }
-          });
+        if (response) {
+          if (response.email === user.email) {
+            this.isSameUser = true;
+            this.emailNotFoundValidation = false;
+          } else {
+            this.isSameUser = false;
+            this.friend = response;
+            this.emailNotFoundValidation = false;
+          }
+          this.emailNotFoundValidation = false;
+          this.sendedFriendRequest = false;
+        } else {
+          this.emailNotFoundValidation = true;
+          this.isSameUser = false;
+        }
       });
   }
 

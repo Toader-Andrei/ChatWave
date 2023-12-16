@@ -40,11 +40,18 @@ export class LoginComponent implements OnInit {
         if (response.length) {
           if (
             response[0].email === this.myForm.value.email &&
+            response[0].password !== this.myForm.value.password
+          ) {
+            this.passwordValidator = true;
+          }
+          if (
+            response[0].email === this.myForm.value.email &&
             response[0].password === this.myForm.value.password
           ) {
             if (this.myForm.value.remember) {
               localStorage.setItem('user', JSON.stringify(response[0]));
             }
+            this.passwordValidator = false;
             this.accountsService.setIsLogged();
             this.accountsService.user = response[0];
             this.router.navigateByUrl('/overview');
